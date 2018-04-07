@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import ReactDOM from 'react-dom';
 import promiseFinally from 'promise.prototype.finally';
 import React from 'react';
@@ -41,22 +40,3 @@ ReactDOM.render((
         </BrowserRouter>
     </Provider>
 ), document.getElementById('root'));
-=======
-// make bluebird default Promise
-Promise = require('bluebird'); // eslint-disable-line no-global-assign
-const { port, env } = require('./config/vars');
-const app = require('./config/express');
-const mongoose = require('./config/mongoose');
-
-// open mongoose connection
-mongoose.connect();
-
-// listen to requests
-app.listen(port, () => console.info(`server started on port ${port} (${env})`));
-
-/**
-* Exports express
-* @public
-*/
-module.exports = app;
->>>>>>> 1712f464c18fb0ca26c2bdc956f3cf2e9ad0a4b3
