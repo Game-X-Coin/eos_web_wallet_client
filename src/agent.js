@@ -56,8 +56,8 @@ const Auth = {
         requests.get('/users/profile'),
     login: (email, password) =>
         requests.post('/auth/login', {email, password}),
-    register: (username, email, password) =>
-        requests.post('/auth/register', {username, email, password}),
+    register: (params) =>
+        requests.post('/auth/register', params),
     save: user =>
         requests.put('/user', {user})
 };

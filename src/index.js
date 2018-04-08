@@ -5,7 +5,7 @@ import {BrowserRouter} from 'react-router-dom';
 import {useStrict} from 'mobx';
 import {Provider} from 'mobx-react';
 
-import App from './components/App';
+import App from './pages/App';
 
 import articlesStore from './stores/articlesStore';
 import commentsStore from './stores/commentsStore';

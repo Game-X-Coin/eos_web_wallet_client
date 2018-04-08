@@ -1,4 +1,4 @@
-import { observable, action } from 'mobx';
+import {action, observable} from 'mobx';
 import agent from '../agent';
 import userStore from './userStore';
 import commonStore from './commonStore';
@@ -8,13 +8,18 @@ class AuthStore {
   @observable errors = undefined;
 
   @observable values = {
-    username: '',
+    account: '',
     email: '',
     password: '',
+    keys: {
+      owner: {private: null, public: null},
+      active: {private: null, public: null},
+    },
+
   };
 
-  @action setUsername(username) {
-    this.values.username = username;
+  @action setAccount(account) {
+    this.values.account = account;
   }
 
   @action setEmail(email) {
@@ -25,8 +30,12 @@ class AuthStore {
     this.values.password = password;
   }
 
+  @action setKeys(keys) {
+    this.values.keys = keys;
+  }
+
   @action reset() {
-    this.values.username = '';
+    this.values.account = '';
     this.values.email = '';
     this.values.password = '';
   }
@@ -34,27 +43,35 @@ class AuthStore {
   @action login() {
     this.inProgress = true;
     this.errors = undefined;
-    return agent.Auth.login(this.values.email, this.values.password)
-      .then(({ token }) => commonStore.setToken(token.accessToken))
-      .then(() => userStore.pullUser())
-      .catch(action((err) => {
-        this.errors = err.response && err.response.body && err.response.body.errors;
-        throw err;
-      }))
-      .finally(action(() => { this.inProgress = false; }));
+    return agent.Auth.login(this.values.email, this.values.password).
+      then(({token}) => commonStore.setToken(token.accessToken)).
+      then(() => userStore.pullUser()).
+      catch(action((err) => {
+        this.errors = err.response && err.response.body &&
+          err.response.body.errors;
+        // console.log(err.response)
+        // console.log(err.response.body.errors)
+        throw(err.response.body.errors);
+      })).
+      finally(action(() => {
+        this.inProgress = false;
+      }));
   }
 
   @action register() {
     this.inProgress = true;
     this.errors = undefined;
-    return agent.Auth.register(this.values.username, this.values.email, this.values.password)
-      .then(({ token }) => commonStore.setToken(token.accessToken))
-      .then(() => userStore.pullUser())
-      .catch(action((err) => {
-        this.errors = err.response && err.response.body && err.response.body.errors;
-        throw err;
-      }))
-      .finally(action(() => { this.inProgress = false; }));
+    return agent.Auth.register({account: this.values.account, email: this.values.email, password: this.values.password}).then(({token, keys}) => {
+      commonStore.setToken(token.accessToken);
+      console.log(keys)
+      this.setKeys(keys);
+    }).then(() => userStore.pullUser()).catch(action((err) => {
+      this.errors = err.response && err.response.body &&
+        err.response.body.errors;
+      throw(err.response.body.errors);
+    })).finally(action(() => {
+      this.inProgress = false;
+    }));
   }
 
   @action logout() {
