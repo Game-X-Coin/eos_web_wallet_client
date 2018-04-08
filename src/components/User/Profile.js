@@ -1,7 +1,6 @@
-import ArticleList from './ArticleList';
 import React from 'react';
-import LoadingSpinner from './LoadingSpinner';
-import RedError from './RedError';
+import LoadingSpinner from './../LoadingSpinner';
+import RedError from './../RedError';
 import { NavLink, Link, withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 
@@ -167,13 +166,6 @@ export default class Profile extends React.Component {
               <div className="articles-toggle">
                 {this.renderTabs()}
               </div>
-
-              <ArticleList
-                articles={articlesStore.articles}
-                totalPagesCount={articlesStore.totalPagesCount}
-                onSetPage={this.handleSetPage}
-                loading={articlesStore.isLoading}
-              />
             </div>
 
           </div>

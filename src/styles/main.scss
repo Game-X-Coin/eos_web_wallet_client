@@ -42,3 +42,16 @@
   display: flex;
   justify-content: space-between;
 }
+
+#home {
+  .home-box {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .logo {
+      width: 450px;
+    }
+  }
+
+}

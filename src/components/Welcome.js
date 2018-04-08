@@ -117,11 +117,13 @@ const { Content } = Layout;
 class Welcome extends React.Component {
 
     render() {
-        
-        return <Layout className="default-top-layout">
-            <Content className="" style={{display:"flex",flexDirection:"column",justifyContent:"center"}}>
-                <h1 style={{textAlign:"center"}}> Welcome to My EOS Wallet </h1>
-                <Particles params={particleVars}/>
+
+        return <Layout className="default-top-layout" id="home">
+            <Content className="home-box">
+              <h1 style={{textAlign:"center"}}> My EOS Wallet </h1>
+              <img className="logo" src={"/eos_logo.png"}/>
+
+
             </Content>
         </Layout>
 

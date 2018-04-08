@@ -3,6 +3,7 @@ import React from 'react';
 import {inject, observer} from 'mobx-react';
 import {Link, withRouter,Redirect} from 'react-router-dom';
 import {Button, Checkbox, Form, Icon, Input, Layout} from 'antd';
+import Welcome from '../Welcome';
 const { Content } = Layout;
 const FormItem = Form.Item;
 @inject('userStore', 'commonStore')
@@ -10,24 +11,14 @@ const FormItem = Form.Item;
 @observer
 class Home extends React.Component {
     componentDidMount() {
-        if(this.props.userStore.currentUser) {
-            this.props.history.replace('/wallet/list');
-        }
+        // if(this.props.userStore.currentUser) {
+        //     this.props.history.replace('/wallet/list');
+        // }
     }
     render() {
         const { getFieldDecorator } = this.props.form;
         const {currentUser } = this.props.userStore;
-
-        if (currentUser)
-          return (
-            <Redirect to="/wallet/list"/>
-           )
-        else
-            return (
-              <Redirect to="/welcome" />
-            )
-
-
+        return <Welcome />
     }
 }
 

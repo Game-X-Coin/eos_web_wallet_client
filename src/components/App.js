@@ -4,20 +4,19 @@ import {Switch, Route, withRouter} from 'react-router-dom';
 import {inject, observer} from 'mobx-react';
 import PrivateRoute from './PrivateRoute';
 
-import Article from './Article';
-import Editor from './Editor';
 import Home from './Home';
-import Login from './Login';
-import Profile from './Profile';
-import Register from './Register';
-import Settings from './Settings';
-import ListWallet from './ListWallet';
-import Send from './Send';
-import Transactions from './Transactions';
-
-import 'antd/dist/antd.css';
+import Login from './User/Login';
+import Profile from './User/Profile';
+import Register from './User/Register';
+import Settings from './User/Settings';
+import ListWallet from './Wallet/ListWallet';
+import Send from './Wallet/Send';
+import Transactions from './Wallet/Transactions';
+import CreateWallet from './Wallet/CreateWallet';
+import 'antd/dist/antd.less';
+import '../styles/custom_theme.module.less';
 import '../styles/main.scss';
-import CreateWallet from './CreateWallet';
+
 import Welcome from './Welcome';
 
 @inject('userStore', 'commonStore')
@@ -46,8 +45,6 @@ export default class App extends React.Component {
                     <Switch>
                         <Route path="/login" component={Login}/>
                         <Route path="/register" component={Register}/>
-                        <Route path="/editor/:slug?" component={Editor}/>
-                        <Route path="/article/:id" component={Article}/>
                         <Route path="/send/" component={Send}/>
                         <Route path="/transactions" component={Transactions}/>
                         <Route path="/wallet/create" component={CreateWallet}/>
