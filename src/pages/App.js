@@ -13,8 +13,7 @@ import ListWallet from './Wallet/ListWallet';
 import Send from './Wallet/Send';
 import Transactions from './Wallet/Transactions';
 import CreateWallet from './Wallet/CreateWallet';
-import 'antd/dist/antd.less';
-import '../styles/custom_theme.module.less';
+import '../styles/antd.less';
 import '../styles/main.scss';
 
 import Welcome from './Welcome';
@@ -47,8 +46,8 @@ export default class App extends React.Component {
                         <Route path="/register" component={Register}/>
                         <Route path="/send/" component={Send}/>
                         <Route path="/transactions" component={Transactions}/>
-                        <Route path="/wallet/create" component={CreateWallet}/>
-                        <Route path="/wallet/list" component={ListWallet}/>
+                        <Route path="/wallets/create" component={CreateWallet}/>
+                        <Route path="/wallets" component={ListWallet}/>
                         <Route path="/welcome" component={Welcome}/>
                         <PrivateRoute path="/settings" component={Settings}/>
                         <Route path="/@:username" component={Profile}/>

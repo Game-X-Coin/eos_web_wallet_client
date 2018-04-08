@@ -25,6 +25,7 @@ class ListWallet extends React.Component {
   async createWalletAct() {
     await agent.Wallets.createWallet(this.walletName);
     this.props.walletsStore.loadWallets();
+    this.hideCreateWalletModal();
   }
 
   @action hideCreateWalletModal() {
