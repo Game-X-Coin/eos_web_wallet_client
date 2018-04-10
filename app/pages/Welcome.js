@@ -110,7 +110,7 @@ import LogoBox from '../components/LogoBox';
 //   retina_detect: true,
 // };
 
-const {Content} = Layout;
+const { Content } = Layout;
 
 @inject('authStore', 'userStore')
 @withRouter
@@ -120,30 +120,31 @@ class Welcome extends React.Component {
     const { userStore, authStore } = this.props;
     const { keys } = authStore.values;
     const { currentUser } = userStore;
-    return (<Layout className="default-top-layout" id="welcome">
-      <h1 style={{textAlign: 'center'}}> My EOS Wallet </h1>
-      <LogoBox />
-      <Content className="links">
-        <h2>Welcome!
-          <Link
-            to="/@currentUser.account">
-            {currentUser.account}
-          </Link>
-        </h2>
-        <h2>Keys</h2>
-        <ul className="keys">
-          <li>owner public key: {keys.owner.public}</li>
-          <li>* owner private key: {keys.owner.private}</li>
-          <li>active public key: {keys.active.public}</li>
-          <li>* active private key: {keys.active.private}</li>
-        </ul>
-        <h2>Your account has been generated! Your private keys are not saved in
-          server and show just once.<br/>
-          Write down private keys in secure place for future use.
-        </h2>
-        <Button href="profile">goto profile</Button>
-      </Content>
-    </Layout>);
+    return (
+      <Layout className="default-top-layout" id="welcome">
+        <h1 style={{ textAlign: 'center' }}> My EOS Wallet </h1>
+        <LogoBox />
+        <Content className="links">
+          <h2>Welcome!
+            <Link to="/@currentUser.account">
+              {currentUser.account}
+            </Link>
+          </h2>
+          <h2>Keys</h2>
+          <ul className="keys">
+            <li>owner public key: {keys.owner.public}</li>
+            <li>* owner private key: {keys.owner.private}</li>
+            <li>active public key: {keys.active.public}</li>
+            <li>* active private key: {keys.active.private}</li>
+          </ul>
+          <h2>Your account has been generated! Your private keys are not saved in
+            server and show just once.<br />
+            Write down private keys in secure place for future use.
+          </h2>
+          <Button href="profile">goto profile</Button>
+        </Content>
+      </Layout>
+    );
   }
 }
 

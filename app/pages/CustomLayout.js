@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import { Layout, Menu, Select } from 'antd';
 
-const Option = Select.Option;
 const { Header, Footer } = Layout;
+const { Option } = Select;
+
+
 const LoggedOutView = (props) => {
   if (!props.currentUser) {
     return (
@@ -31,7 +33,7 @@ const LoggedInView = (props) => {
             to={`/@${props.currentUser.account}`}
             className="nav-link"
           >
-            <img src={props.currentUser.image} className="user-pic" alt="" />
+            <img src={props.currentUser.image} className="user-pic" alt="user-pic" />
             Welcome {props.currentUser.account}
           </Link>
         </li>
@@ -52,7 +54,7 @@ class CustomHeader extends React.Component {
   render() {
     return (
       <Header className="header">
-        <div className="logo"><Link to="/"><img src={require('./../assets/images/eos-logo.png')} /></Link>
+        <div className="logo"><Link to="/"><img src={require('./../assets/images/eos-logo.png')} alt="eos-logo" /></Link>
         </div>
         <Menu
           theme="dark"

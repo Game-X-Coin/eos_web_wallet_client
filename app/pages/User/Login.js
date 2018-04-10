@@ -1,16 +1,15 @@
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React from 'react';
-import {inject, observer} from 'mobx-react';
-import {Button, Checkbox, Form, Icon, Input, Layout, message} from 'antd';
+import { inject, observer } from 'mobx-react';
+import { Button, Checkbox, Form, Icon, Input, Layout, message } from 'antd';
 import LogoBox from '../../components/LogoBox';
 
-const {Content} = Layout;
+const { Content } = Layout;
 const FormItem = Form.Item;
 
 @inject('authStore')
 @observer
 class Login extends React.Component {
-
   componentWillUnmount() {
     this.props.authStore.reset();
   }
@@ -29,18 +28,16 @@ class Login extends React.Component {
         message.error(messages);
       }
     });
-
   }
 
   render() {
-    const {values, errors, inProgress} = this.props.authStore;
-    const {getFieldDecorator} = this.props.form;
+    const { getFieldDecorator } = this.props.form;
     return (
       <Layout className="default-top-layout">
         <Content className="">
           <Form onSubmit={this.handleSubmit.bind(this)} className="login-form">
             <h1>Login on EOS Wallet</h1>
-            <LogoBox/>
+            <LogoBox />
             <FormItem>
               {getFieldDecorator('email', {
                 rules: [
@@ -48,11 +45,13 @@ class Login extends React.Component {
                     required: true,
                     message: 'Please input your username!',
                   }],
-              })(
-                <Input prefix={<Icon type="user"
-                                     style={{color: 'rgba(0,0,0,.25)'}}/>}
-                       placeholder="Email"/>,
-              )}
+              })(<Input
+                prefix={<Icon
+                  type="user"
+                  style={{ color: 'rgba(0,0,0,.25)' }}
+                />}
+                placeholder="Email"
+              />)}
             </FormItem>
             <FormItem>
               {getFieldDecorator('password', {
@@ -61,23 +60,27 @@ class Login extends React.Component {
                     required: true,
                     message: 'Please input your Password!',
                   }],
-              })(
-                <Input prefix={<Icon type="lock"
-                                     style={{color: 'rgba(0,0,0,.25)'}}/>}
-                       type="password" placeholder="Password"/>,
-              )}
+              })(<Input
+                prefix={<Icon
+                  type="lock"
+                  style={{ color: 'rgba(0,0,0,.25)' }}
+                />}
+                type="password"
+                placeholder="Password"
+              />)}
             </FormItem>
 
             <FormItem>
               {getFieldDecorator('remember', {
                 valuePropName: 'checked',
                 initialValue: true,
-              })(
-                <Checkbox>Remember me</Checkbox>,
-              )}
+              })(<Checkbox>Remember me</Checkbox>)}
               <a className="login-form-forgot" href="">Forgot password</a>
-              <Button type="primary" htmlType="submit"
-                      className="login-form-button">
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+              >
                 Log in
               </Button>
               Or <Link to="/register">Register</Link>

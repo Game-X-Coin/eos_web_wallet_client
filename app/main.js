@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {AppContainer} from 'react-hot-loader';
-import {Provider} from 'mobx-react';
-import {BrowserRouter} from 'react-router-dom';
-import Root from './pages/App';
+import { AppContainer } from 'react-hot-loader';
+import { Provider } from 'mobx-react';
+import { BrowserRouter } from 'react-router-dom';
 
+import Root from './pages/App';
 import authStore from './stores/authStore';
 import commonStore from './stores/commonStore';
 import userStore from './stores/userStore';
@@ -26,7 +26,7 @@ const render = (Component) => {
     <AppContainer>
       <Provider {...stores}>
         <BrowserRouter>
-          <Component/>
+          <Component />
         </BrowserRouter>
       </Provider>
     </AppContainer>,
@@ -38,6 +38,6 @@ render(Root);
 
 if (module.hot) {
   module.hot.accept('./pages/App', () => {
-    render(App);
+    render(Root);
   });
 }

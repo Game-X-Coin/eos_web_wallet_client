@@ -58,12 +58,17 @@ class AuthStore {
       }));
   }
 
+  @action logout() {
+    commonStore.setToken(undefined);
+    userStore.forgetUser();
+    return Promise.resolve();
+  }
+
   @action register() {
     this.inProgress = true;
     this.errors = undefined;
     return agent.Auth.register({ account: this.values.account, email: this.values.email, password: this.values.password }).then(({ token, keys }) => {
       commonStore.setToken(token.accessToken);
-      console.log(keys);
       this.setKeys(keys);
     }).then(() => userStore.pullUser()).catch(action((err) => {
       this.errors = err.response && err.response.body &&
@@ -73,12 +78,6 @@ class AuthStore {
       .finally(action(() => {
         this.inProgress = false;
       }));
-  }
-
-  @action logout() {
-    commonStore.setToken(undefined);
-    userStore.forgetUser();
-    return Promise.resolve();
   }
 }
 

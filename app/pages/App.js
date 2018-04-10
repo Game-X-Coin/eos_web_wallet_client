@@ -1,19 +1,17 @@
-import { CustomFooter, CustomHeader } from './CustomLayout';
 import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
-import PrivateRoute from './PrivateRoute';
 
+// import PrivateRoute from './PrivateRoute';
 import Home from './Home';
 import Login from './User/Login';
 import Profile from './User/Profile';
 import Register from './User/Register';
-import Settings from './User/Settings';
 import ListWallet from './Wallet/ListWallet';
 import Send from './Wallet/Send';
 import Transactions from './Wallet/Transactions';
 import CreateWallet from './Wallet/CreateWallet';
-
+import { CustomFooter, CustomHeader } from './CustomLayout';
 
 import Welcome from './Welcome';
 
@@ -47,7 +45,6 @@ export default class App extends React.Component {
             <Route path="/wallets/create" component={CreateWallet} />
             <Route path="/wallets" component={ListWallet} />
             <Route path="/welcome" component={Welcome} />
-            <PrivateRoute path="/settings" component={Settings} />
             <Route path="/@:username" component={Profile} />
             <Route path="/@:username/favorites" component={Profile} />
             <Route path="/" component={Home} />
