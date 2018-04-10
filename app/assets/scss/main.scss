@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
+
+body {
+  font-family: 'PT Sans', sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+.ant-layout-header {
+  display: flex;
+  justify-content: space-between;
+  //flex-direction: column;
+  .logo {
+    color: white;
+  }
+  .right-menu {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.default-top-layout {
+  padding: 50px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.login-form, .register-form {
+  margin: 0 auto;
+  max-width: 550px;
+  h1 {
+    text-align: center;
+  }
+
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+}
+
+.right-menus {
+  display: flex;
+  li {
+    padding: 0 10px;
+  }
+}
+
+.create-wallet {
+  display: flex;
+  button {
+    justify-content: center;
+  }
+;
+}
+
+.list-wallet {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header {
+  .logo {
+    img {
+      width: 45px;
+    }
+  }
+}
+
+.logo-gif-box {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .logo {
+    width: 200px;
+    margin-bottom: 15px;
+  }
+}
+
+#home {
+  .links {
+    text-align: center;
+    font-size: 16px;
+    .divider {
+      margin: 0 15px;
+      padding: 1px;
+    }
+  }
+  .how-it-works {
+    padding: 50px;
+    text-align: center;
+  }
+
+}
+
+#profile {
+  max-width: 550px;
+  padding: 15px 20px;
+  //border: 1px solid #ccc;
+  margin: 0 auto;
+  .wallets {
+    position: relative;
+    .go-to-wallets-btn {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .wallet-box {
+      padding: 15px 20px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+  }
+  .btns {
+    margin: 10px;
+    text-align: center;
+  }
+
+}
+
+#welcome {
+  text-align: center;
+  .keys {
+    text-align: left;
+  }
+}
