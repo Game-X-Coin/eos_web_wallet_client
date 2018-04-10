@@ -7,9 +7,9 @@ const superagent = superagentPromise(_superagent, global.Promise);
 
 const API_ROOT = 'http://localhost:3001/v1';
 
-const encode = encodeURIComponent;
+// const encode = encodeURIComponent;
 
-const handleErrors = err => {
+const handleErrors = (err) => {
   if (err && err.response && err.response.status === 401) {
     authStore.logout();
   }
@@ -18,7 +18,7 @@ const handleErrors = err => {
 
 const responseBody = res => res.body;
 
-const tokenPlugin = req => {
+const tokenPlugin = (req) => {
   if (commonStore.token) {
     req.set('authorization', `Bearer ${commonStore.token}`);
   }
@@ -26,36 +26,36 @@ const tokenPlugin = req => {
 
 const requests = {
   del: url =>
-    superagent.del(`${API_ROOT}${url}`).
-      use(tokenPlugin).
-      end(handleErrors).
-      then(responseBody),
+    superagent.del(`${API_ROOT}${url}`)
+      .use(tokenPlugin)
+      .end(handleErrors)
+      .then(responseBody),
   get: url =>
-    superagent.get(`${API_ROOT}${url}`).
-      use(tokenPlugin).
-      end(handleErrors).
-      then(responseBody),
+    superagent.get(`${API_ROOT}${url}`)
+      .use(tokenPlugin)
+      .end(handleErrors)
+      .then(responseBody),
   put: (url, body) =>
-    superagent.put(`${API_ROOT}${url}`, body).
-      use(tokenPlugin).
-      end(handleErrors).
-      then(responseBody),
+    superagent.put(`${API_ROOT}${url}`, body)
+      .use(tokenPlugin)
+      .end(handleErrors)
+      .then(responseBody),
   post: (url, body) =>
-    superagent.post(`${API_ROOT}${url}`, body).
-      use(tokenPlugin).
-      end(handleErrors).
-      then(responseBody),
+    superagent.post(`${API_ROOT}${url}`, body)
+      .use(tokenPlugin)
+      .end(handleErrors)
+      .then(responseBody),
 };
 
 const Auth = {
   current: () =>
     requests.get('/users/profile'),
   login: (email, password) =>
-    requests.post('/auth/login', {email, password}),
-  register: (params) =>
+    requests.post('/auth/login', { email, password }),
+  register: params =>
     requests.post('/auth/register', params),
   save: user =>
-    requests.put('/user', {user}),
+    requests.put('/user', { user }),
 };
 
 // const limit = (count, p) => `limit=${count}&offset=${p ? p * count : 0}`;
@@ -70,10 +70,10 @@ const Profile = {
     requests.del(`/profiles/${username}/follow`),
 };
 const Wallets = {
-  all: e =>
-    requests.get(`/wallets`),
+  all: () =>
+    requests.get('/wallets'),
   createWallet: walletName =>
-    requests.post(`/wallets`, {walletName}),
+    requests.post('/wallets', { walletName }),
 };
 export default {
   Auth,
