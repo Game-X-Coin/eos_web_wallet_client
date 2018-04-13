@@ -3,7 +3,7 @@
     [
       "@babel/preset-env",
       {
-        targets: {
+        "targets": {
           "browsers": [
             "last 2 versions",
             "safari >= 7"
@@ -14,21 +14,15 @@
     ],
     "@babel/preset-react"
   ],
-  plugins: [
+  "plugins": [
     "@babel/plugin-proposal-decorators",
+    "react-hot-loader/babel",
     [
       "@babel/plugin-proposal-class-properties",
       {
         "loose": true
       }
     ],
-    "babel-plugin-transform-function-bind",
-    [
-      "import",
-      {
-        "libraryName": "antd",
-        "style": true
-      }
-    ]
+    "babel-plugin-transform-function-bind"
   ]
 }

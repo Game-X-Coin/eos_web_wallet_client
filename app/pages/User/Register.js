@@ -4,6 +4,7 @@ import { Button, Form, Icon, Input, Layout, message } from 'antd';
 
 
 import LogoBox from '../../components/LogoBox';
+import { showApiError } from '../../utils';
 
 const { Content } = Layout;
 const FormItem = Form.Item;
@@ -26,8 +27,7 @@ class Register extends React.Component {
         await this.props.authStore.register();
         this.props.history.replace('/welcome');
       } catch (errors) {
-        const messages = errors.map(x => x.messages.join(' ')).join('\n');
-        message.error(messages);
+        showApiError(errors);
       }
     });
   }

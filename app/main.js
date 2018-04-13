@@ -38,6 +38,6 @@ render(Root);
 
 if (module.hot) {
   module.hot.accept('./pages/App', () => {
-    render(Root);
+    render(require('./pages/App'));
   });
 }

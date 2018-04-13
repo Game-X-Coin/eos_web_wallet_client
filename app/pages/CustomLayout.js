@@ -33,8 +33,7 @@ const LoggedInView = (props) => {
             to={`/@${props.currentUser.account}`}
             className="nav-link"
           >
-            <img src={props.currentUser.image} className="user-pic" alt="user-pic" />
-            Welcome {props.currentUser.account}
+            Welcome {props.currentUser.account}!
           </Link>
         </li>
       </ul>
@@ -52,32 +51,24 @@ class CustomHeader extends React.Component {
   };
 
   render() {
-    return (
-      <Header className="header">
-        <div className="logo"><Link to="/"><img src={require('./../assets/images/eos-logo.png')} alt="eos-logo" /></Link>
-        </div>
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['2']}
-          style={{ lineHeight: '64px' }}
+    return <Header className="header">
+      <div className="logo"><Link to="/"><img
+        src={require('./../assets/images/eos-logo.png')} alt="eos-logo"/></Link>
+      </div>
+      <div className="right-menu">
+        <LoggedOutView currentUser={this.props.userStore.currentUser}/>
+        <LoggedInView currentUser={this.props.userStore.currentUser}/>
+        <Select
+          className="select-server"
+          defaultValue="gxc"
+          style={{width: 120}}
+          onChange={this.handleChangeServer}
         >
-          <div className="right-menu">
-            <LoggedOutView currentUser={this.props.userStore.currentUser} />
-            <LoggedInView currentUser={this.props.userStore.currentUser} />
-            <Select
-              className="select-server"
-              defaultValue="gxc"
-              style={{ width: 120 }}
-              onChange={this.handleChangeServer}
-            >
-              <Option value="gxc">GXC Testnet</Option>
-              <Option value="public">Public Testnet</Option>
-            </Select>
-          </div>
-        </Menu>
-      </Header>
-    );
+          <Option value="gxc">Decipher Testnet</Option>
+          <Option value="public">Public Testnet</Option>
+        </Select>
+      </div>
+    </Header>;
   }
 }
 

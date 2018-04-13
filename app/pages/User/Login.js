@@ -3,7 +3,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Button, Checkbox, Form, Icon, Input, Layout, message } from 'antd';
 import LogoBox from '../../components/LogoBox';
-
+import { showApiError } from '../../utils';
 const { Content } = Layout;
 const FormItem = Form.Item;
 
@@ -24,8 +24,8 @@ class Login extends React.Component {
         await this.props.authStore.login();
         this.props.history.replace('/balance');
       } catch (errors) {
-        const messages = errors.map(x => x.messages.join(' ')).join('\n');
-        message.error(messages);
+        console.log(errors);
+        showApiError(errors);
       }
     });
   }

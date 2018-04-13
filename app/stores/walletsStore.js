@@ -7,18 +7,8 @@ export class WalletsStore {
     @observable isLoading = false;
     @observable page = 0;
     @observable totalPagesCount = 0;
-    @observable walletsRegistry = observable.map();
+    @observable wallets = observable([]);
     @observable predicate = {};
-
-    @computed get wallets() {
-      return this.walletsRegistry.values();
-    }
-
-    @action setPredicate(predicate) {
-      if (JSON.stringify(predicate) === JSON.stringify(this.predicate)) return;
-      this.clear();
-      this.predicate = predicate;
-    }
 
     $req() {
       // if (this.predicate.myFeed) return agent.Articles.feed(this.page, LIMIT);
@@ -32,8 +22,7 @@ export class WalletsStore {
       this.isLoading = true;
       return this.$req()
         .then(action(({ wallets, walletsCount }) => {
-          this.walletsRegistry.clear();
-          wallets.forEach(wallet => this.walletsRegistry.set(wallet.walletName, wallet));
+          this.wallets = wallets;
           this.totalPagesCount = Math.ceil(walletsCount / LIMIT);
         }))
         .finally(action(() => {

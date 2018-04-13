@@ -76,15 +76,7 @@ const config = {
           }, {
             loader: 'css-loader',
           }, {
-            loader: 'less-loader',
-            options: {
-              modifyVars: {
-                '@layout-header-background': '#ffffff',
-                '@layout-footer-background': '#333333',
-                '@primary-color': '#e67f47',
-                '@font-family': '\'Poppins\',\'Spoqa Han Sans\', sans-serif;',
-              },
-            },
+            loader: 'less-loader'
           }],
       },
 

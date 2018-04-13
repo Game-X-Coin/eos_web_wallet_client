@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
-
+@import "sizes";
 body {
   font-family: 'PT Sans', sans-serif;
 }
@@ -11,6 +11,9 @@ h1 {
 .ant-layout-header {
   display: flex;
   justify-content: space-between;
+  max-width: $max-screen-width;
+  padding: 0;
+  margin: 0 auto;
   //flex-direction: column;
   .logo {
     color: white;
@@ -19,16 +22,20 @@ h1 {
     display: flex;
     align-items: center;
   }
+  li {
+    list-style: none;
+    margin-top: 13px;
+  }
 }
 
 .default-top-layout {
   padding: 50px;
-  max-width: 1280px;
+  max-width: $max-screen-width;
   margin: 0 auto;
 }
 
 .login-form, .register-form {
-  margin: 0 auto;
+  margin: 0 auto !important;
   max-width: 550px;
   h1 {
     text-align: center;
