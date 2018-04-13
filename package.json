@@ -1,7 +1,7 @@
 {
-  "name": "react-webpack-boilerplate",
+  "name": "eos-web-wallet-cleint",
   "version": "2.1.0",
-  "description": "Minimalistic ES6 React boilerplate",
+  "description": "eos web wallet client",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
