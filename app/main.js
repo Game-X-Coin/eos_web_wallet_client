@@ -10,14 +10,17 @@ import commonStore from './stores/commonStore';
 import userStore from './stores/userStore';
 import profileStore from './stores/profileStore';
 import walletsStore from './stores/walletsStore';
+import transactionsStore from './stores/transactionsStore';
 import './assets/scss/antd.less';
 import './assets/scss/main.scss';
+
 
 const stores = {
   authStore,
   commonStore,
   userStore,
   profileStore,
+  transactionsStore,
   walletsStore,
 };
 

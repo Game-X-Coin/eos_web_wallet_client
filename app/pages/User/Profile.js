@@ -71,13 +71,6 @@ export default class Profile extends React.Component {
                       status="processing"
                     />{wallet.walletName}
                     </p>
-                    <Link
-                      to={`/send/${wallet.title}`}
-                      style={{ textAlign: 'center' }}
-                    ><Icon
-                      type="retweet"
-                    /> transaction
-                    </Link>
                   </Col>);
               })}
             </Row>

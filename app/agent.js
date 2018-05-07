@@ -62,12 +62,8 @@ const Auth = {
 // const omitSlug = article => Object.assign({}, article, {slug: undefined})
 
 const Profile = {
-  follow: username =>
-    requests.post(`/profiles/${username}/follow`),
   get: username =>
     requests.get(`/profiles/${username}`),
-  unfollow: username =>
-    requests.del(`/profiles/${username}/follow`),
 };
 const Wallets = {
   all: () =>
@@ -75,8 +71,20 @@ const Wallets = {
   createWallet: walletName =>
     requests.post('/wallets', { walletName }),
 };
+
+const EOS = {
+  requestFaucet: () =>
+    requests.post('/eos/request_faucet'),
+}
+
+const Transactions = {
+  load: (id) =>
+    requests.get(`/eos/transaction/${id}`),
+}
 export default {
   Auth,
   Profile,
   Wallets,
+  EOS,
+  Transactions,
 };

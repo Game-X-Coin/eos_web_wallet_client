@@ -1,8 +1,10 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
+import { observable } from 'mobx';
 import { Link, withRouter } from 'react-router-dom';
-import { Layout, Divider } from 'antd';
+import {Layout, Divider, Button, Modal } from 'antd';
 import LogoBox from '../../components/LogoBox';
+import agent from '../../agent';
 
 const { Content } = Layout;
 
@@ -10,16 +12,40 @@ const { Content } = Layout;
 @withRouter
 @observer
 class Home extends React.Component {
+  @observable showFaucetModal = false;
+  @observable transactionId = null;
+  @observable faucetQuantity = 0.0;
   componentDidMount() {
     // if(this.props.userStore.currentUser) {
     //     this.props.history.replace('/wallet/list');
     // }
   }
 
+  async requestFaucet() {
+    try {
+      const { quantity, transactionId } = await agent.EOS.requestFaucet()
+      this.showFaucetModal = true
+      this.faucetQuantity = quantity
+      this.transactionId = transactionId
+      this.props.userStore.pullUser()
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   render() {
     const { currentUser } = this.props.userStore;
     return (
       <Layout className="default-top-layout" id="home">
+        <Modal
+          title="Request Faucet successful."
+          visible={this.showFaucetModal}
+          onOk={() => this.showFaucetModal = false}
+          onCancel={() => this.showFaucetModal = false}
+        >
+          <h4>Request faucet has been successfully requested.</h4>
+          <h4>requested quantity: {this.faucetQuantity} <br/>transaction id: <Link to={`tx/${this.transactionId}`}>{this.transactionId}</Link></h4>
+        </Modal>
         <h1 style={{ textAlign: 'center' }}> My EOS Wallet </h1>
         <LogoBox />
         {currentUser ?
@@ -27,6 +53,10 @@ class Home extends React.Component {
             <h2>Welcome<br /><Link to="/@currentUser.account">{currentUser.account}</Link></h2>
             <div>balance: {currentUser.balance} </div>
             <Link to="/wallets">goto Wallet Management</Link>
+            <br />
+            <br />
+
+            <Button onClick={::this.requestFaucet}>Request EOS Faucet</Button>
           </Content>
           :
           <Content className="links">

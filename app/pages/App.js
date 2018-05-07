@@ -9,11 +9,11 @@ import Profile from './User/Profile';
 import Register from './User/Register';
 import ListWallet from './Wallet/ListWallet';
 import Send from './Wallet/Send';
-import Transactions from './Wallet/Transactions';
 import CreateWallet from './Wallet/CreateWallet';
 import { CustomFooter, CustomHeader } from './CustomLayout';
 
 import Welcome from './Welcome';
+import Transaction from './Blockchain/transaction';
 
 @inject('userStore', 'commonStore')
 @withRouter
@@ -40,13 +40,11 @@ export default class App extends React.Component {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/send/" component={Send} />
-            <Route path="/transactions" component={Transactions} />
             <Route path="/wallets/create" component={CreateWallet} />
             <Route path="/wallets" component={ListWallet} />
             <Route path="/welcome" component={Welcome} />
             <Route path="/@:username" component={Profile} />
-            <Route path="/@:username/favorites" component={Profile} />
+            <Route path="/tx/:transactionId" component={Transaction} />
             <Route path="/" component={Home} />
           </Switch>
           <CustomFooter />
