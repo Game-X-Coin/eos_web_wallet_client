@@ -16,7 +16,7 @@ const config = {
   context: resolve(__dirname, 'app'),
 
   output: {
-    filename: 'bundle.js',
+    filename: '[name].[chunkhash:8].js',
     path: resolve(__dirname, 'dist'),
     publicPath: '',
   },
