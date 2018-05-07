@@ -71,7 +71,6 @@ export default class Profile extends React.Component {
                       status="processing"
                     />{wallet.walletName}
                     </p>
-                    <p>{`balance: ${wallet.balance}`}</p>
                     <Link
                       to={`/send/${wallet.title}`}
                       style={{ textAlign: 'center' }}

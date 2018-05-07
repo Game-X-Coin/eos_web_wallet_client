@@ -76,7 +76,7 @@ class CustomFooter extends React.Component {
   render() {
     return (
       <Footer style={{ textAlign: 'center' }}>
-        EOS Web Wallet ©2018 Created by GXC x Decipher
+        EOS Web Wallet ©2018 Created by Decipher x GXC
       </Footer>
     );
   }

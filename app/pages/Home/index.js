@@ -25,6 +25,7 @@ class Home extends React.Component {
         {currentUser ?
           <Content className="links">
             <h2>Welcome<br /><Link to="/@currentUser.account">{currentUser.account}</Link></h2>
+            <div>balance: {currentUser.balance} </div>
             <Link to="/wallets">goto Wallet Management</Link>
           </Content>
           :
