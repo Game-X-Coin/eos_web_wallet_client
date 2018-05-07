@@ -8,6 +8,7 @@ const config = {
   devtool: 'cheap-module-source-map',
 
   entry: [
+    'babel-polyfill',
     './main.js',
     './assets/scss/main.scss',
   ],
