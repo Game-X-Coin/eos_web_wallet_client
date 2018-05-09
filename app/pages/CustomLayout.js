@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import { Layout, Select, message } from 'antd';
 
-const { Header, Footer } = Layout;
+const { Header, Content, Footer } = Layout;
 const { Option } = Select;
 
 
@@ -59,7 +59,7 @@ class CustomHeader extends React.Component {
 
   render() {
     return (
-      <Header className="header">
+      <Header className="header" style={{ position: 'fixed', width: '100%' }}>
         <div className="logo">
           <Link to="/">
             <img
@@ -87,10 +87,20 @@ class CustomHeader extends React.Component {
   }
 }
 
+class CustomMain extends React.Component {
+  render() {
+    return (
+      <Content style={{ minHeight: '100vh', paddingTop: '65px', paddingBottom: '70px' }}>
+        {this.props.children}
+      </Content>
+    );
+  }
+}
+
 class CustomFooter extends React.Component {
   render() {
     return (
-      <Footer style={{ textAlign: 'center' }}>
+      <Footer style={{ textAlign: 'center', position: 'fixed', width: '100%', bottom: '0' }}>
         EOS Web Wallet ©2018 Created by Decipher x GXC
       </Footer>
     );
@@ -99,6 +109,7 @@ class CustomFooter extends React.Component {
 
 export {
   CustomHeader,
+  CustomMain,
   CustomFooter,
 };
 

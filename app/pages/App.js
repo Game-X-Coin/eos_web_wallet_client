@@ -9,7 +9,7 @@ import Profile from './User/Profile';
 import Register from './User/Register';
 import ListWallet from './Wallet/ListWallet';
 import CreateWallet from './Wallet/CreateWallet';
-import { CustomFooter, CustomHeader } from './CustomLayout';
+import { CustomFooter, CustomMain, CustomHeader } from './CustomLayout';
 
 import Welcome from './Welcome';
 import Transaction from './Blockchain/Transaction';
@@ -37,17 +37,19 @@ export default class App extends React.Component {
       return (
         <div>
           <CustomHeader />
-          <Switch>
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/wallets/create" component={CreateWallet} />
-            <Route path="/wallets" component={ListWallet} />
-            <Route path="/welcome" component={Welcome} />
-            <Route path="/@:username" component={Profile} />
-            <Route path="/tx/new" component={NewTransaction} />
-            <Route path="/tx/:transactionId" component={Transaction} />
-            <Route path="/" component={Home} />
-          </Switch>
+          <CustomMain>
+            <Switch>
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <Route path="/wallets/create" component={CreateWallet} />
+              <Route path="/wallets" component={ListWallet} />
+              <Route path="/welcome" component={Welcome} />
+              <Route path="/@:username" component={Profile} />
+              <Route path="/tx/new" component={NewTransaction} />
+              <Route path="/tx/:transactionId" component={Transaction} />
+              <Route path="/" component={Home} />
+            </Switch>
+          </CustomMain>
           <CustomFooter />
         </div>
       );
