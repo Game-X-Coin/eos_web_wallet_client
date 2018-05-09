@@ -43,7 +43,7 @@ class Home extends React.Component {
   render() {
     const { currentUser } = this.props.userStore;
     return (
-      <Layout className="default-top-layout" id="home">
+      <Layout className="default-top-layout" id="home" style={{ textAlign: 'center' }}>
         <Modal
           title="Request Faucet successful."
           visible={this.showFaucetModal}
@@ -53,7 +53,7 @@ class Home extends React.Component {
           <h4>Request faucet has been successfully requested.</h4>
           <h4>requested quantity: {this.faucetQuantity} <br/>transaction id: <Link to={`/tx/${this.transactionId}`}>{this.transactionId}</Link></h4>
         </Modal>
-        <h1 style={{ textAlign: 'center' }}> My EOS Wallet </h1>
+        <h1> My EOS Wallet </h1>
         <LogoBox />
         {currentUser ?
           <Content className="links">
