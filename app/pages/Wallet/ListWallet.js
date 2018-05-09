@@ -82,17 +82,6 @@ class ListWallet extends React.Component {
                     status="processing"
                   />{wallet.walletName}
                   </p>
-                  <Badge
-                    count={`balance: ${wallet.balance}`}
-                    style={{ backgroundColor: '#52c41a' }}
-                  />
-                  <Link
-                    to={`/send/${wallet.title}`}
-                    style={{ textAlign: 'center' }}
-                  ><Icon
-                    type="retweet"
-                  /> transaction
-                  </Link>
                 </Col>);
             })}
           </Row>

@@ -1,4 +1,4 @@
-import { observable, action, computed } from 'mobx';
+import { observable, action } from 'mobx';
 import agent from '../agent';
 
 const LIMIT = 10;
@@ -30,9 +30,7 @@ export class TransactionsStore {
       agent.Transactions.load(id)
         .then(action(({ transaction }) => {
           this.transactions = [transaction];
-          console.log(transction);
-          console.log(this.transactions.length);
-      }));
+        }));
     }
 
     @action

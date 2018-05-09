@@ -80,6 +80,8 @@ const EOS = {
 const Transactions = {
   load: (id) =>
     requests.get(`/eos/transaction/${id}`),
+  new: (params) =>
+    requests.post('/eos/transaction', params),
 }
 export default {
   Auth,

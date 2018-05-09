@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
-import { Layout, Menu, Select } from 'antd';
+import { Layout, Select, message } from 'antd';
 
 const { Header, Footer } = Layout;
 const { Option } = Select;
@@ -46,29 +46,44 @@ const LoggedInView = (props) => {
 @inject('userStore', 'commonStore')
 @observer
 class CustomHeader extends React.Component {
-  handleChangeServer = () => {
-
+  constructor(props) {
+    super(props);
+    this.selectServer = React.createRef();
+  }
+  handleChangeServer = (e) => {
+    if (e === 'public') {
+      message.error('Not yet implemented');
+    }
   };
 
+
   render() {
-    return <Header className="header">
-      <div className="logo"><Link to="/"><img
-        src={require('./../assets/images/eos-logo.png')} alt="eos-logo"/></Link>
-      </div>
-      <div className="right-menu">
-        <LoggedOutView currentUser={this.props.userStore.currentUser}/>
-        <LoggedInView currentUser={this.props.userStore.currentUser}/>
-        <Select
-          className="select-server"
-          defaultValue="gxc"
-          style={{width: 120}}
-          onChange={this.handleChangeServer}
-        >
-          <Option value="gxc">Decipher Testnet</Option>
-          <Option value="public">Public Testnet</Option>
-        </Select>
-      </div>
-    </Header>;
+    return (
+      <Header className="header">
+        <div className="logo">
+          <Link to="/">
+            <img
+              src={require('./../assets/images/eos-logo.png')}
+              alt="eos-logo"
+            />
+          </Link>
+        </div>
+        <div className="right-menu">
+          <LoggedOutView currentUser={this.props.userStore.currentUser} />
+          <LoggedInView currentUser={this.props.userStore.currentUser} />
+          <Select
+            className="select-server"
+            defaultValue="gxc"
+            style={{ width: 120 }}
+            value="gxc"
+            onChange={this.handleChangeServer}
+          >
+            <Option value="gxc">Decipher Testnet</Option>
+            <Option value="public" onClick={this.showNowYet}>Public Testnet</Option>
+          </Select>
+        </div>
+      </Header>
+    );
   }
 }
 

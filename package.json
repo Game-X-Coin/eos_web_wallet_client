@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
+    "dev": "webpack-dev-server",
     "clean": "rimraf dist",
     "production": "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
     "lint": "eslint ./app/**/**.js",
@@ -45,6 +46,7 @@
     "react-dom": "16.3.1",
     "react-hot-loader": "4.0.1",
     "react-json-pretty": "^1.7.6",
+    "react-json-view": "^1.16.6",
     "react-router-dom": "4.2.2",
     "superagent": "^3.8.2",
     "superagent-promise": "^1.1.0"

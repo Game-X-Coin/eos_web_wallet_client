@@ -15,6 +15,9 @@ class AuthStore {
       owner: { private: null, public: null },
       active: { private: null, public: null },
     },
+    ownerWalletPassword: '',
+    activeWalletPassword: '',
+
 
   };
 
@@ -30,8 +33,10 @@ class AuthStore {
     this.values.password = password;
   }
 
-  @action setKeys(keys) {
+  @action setTempValues(keys, ownerWalletPassword, activeWalletPassword) {
     this.values.keys = keys;
+    this.values.ownerWalletPassword = ownerWalletPassword;
+    this.values.activeWalletPassword = activeWalletPassword;
   }
 
   @action reset() {
@@ -65,14 +70,17 @@ class AuthStore {
   @action register() {
     this.inProgress = true;
     this.errors = undefined;
-    return agent.Auth.register({ account: this.values.account, email: this.values.email, password: this.values.password }).then(({ token, keys }) => {
-      commonStore.setToken(token.accessToken);
-      this.setKeys(keys);
-    }).then(() => userStore.pullUser()).catch(action((err) => {
-      this.errors = err.response && err.response.body &&
-        err.response.body.errors;
-      throw (err.response.body);
-    }))
+    return agent.Auth.register({ account: this.values.account, email: this.values.email, password: this.values.password })
+      .then(({
+        token, keys, ownerWalletPassword, activeWalletPassword,
+      }) => {
+        commonStore.setToken(token.accessToken);
+        this.setTempValues(keys, ownerWalletPassword, activeWalletPassword);
+      }).then(() => userStore.pullUser()).catch(action((err) => {
+        this.errors = err.response && err.response.body &&
+          err.response.body.errors;
+        throw (err.response.body);
+      }))
       .finally(action(() => {
         this.inProgress = false;
       }));

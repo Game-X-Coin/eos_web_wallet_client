@@ -2,7 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { observable } from 'mobx';
 import { Link, withRouter } from 'react-router-dom';
-import {Layout, Divider, Button, Modal } from 'antd';
+import { Layout, Divider, Button, Modal } from 'antd';
 import LogoBox from '../../components/LogoBox';
 import agent from '../../agent';
 
@@ -23,14 +23,21 @@ class Home extends React.Component {
 
   async requestFaucet() {
     try {
-      const { quantity, transactionId } = await agent.EOS.requestFaucet()
-      this.showFaucetModal = true
-      this.faucetQuantity = quantity
-      this.transactionId = transactionId
-      this.props.userStore.pullUser()
+      const { transaction: { quantity, transactionId }} = await agent.EOS.requestFaucet();
+      this.showFaucetModal = true;
+      this.faucetQuantity = quantity;
+      this.transactionId = transactionId;
+      this.props.userStore.pullUser();
     } catch (e) {
       console.error(e)
     }
+  }
+  gotoNewTransaction () {
+    this.props.history.replace('/tx/new');
+  }
+
+  gotoWallets () {
+    this.props.history.replace('/wallets');
   }
 
   render() {
@@ -44,7 +51,7 @@ class Home extends React.Component {
           onCancel={() => this.showFaucetModal = false}
         >
           <h4>Request faucet has been successfully requested.</h4>
-          <h4>requested quantity: {this.faucetQuantity} <br/>transaction id: <Link to={`tx/${this.transactionId}`}>{this.transactionId}</Link></h4>
+          <h4>requested quantity: {this.faucetQuantity} <br/>transaction id: <Link to={`/tx/${this.transactionId}`}>{this.transactionId}</Link></h4>
         </Modal>
         <h1 style={{ textAlign: 'center' }}> My EOS Wallet </h1>
         <LogoBox />
@@ -57,6 +64,8 @@ class Home extends React.Component {
             <br />
 
             <Button onClick={::this.requestFaucet}>Request EOS Faucet</Button>
+            <Button onClick={::this.gotoNewTransaction}>Make transaction</Button>
+            <Button onClick={::this.gotoWallets}>Wallet management</Button>
           </Content>
           :
           <Content className="links">

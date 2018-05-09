@@ -2,8 +2,8 @@ import React from 'react';
 import {inject, observer} from 'mobx-react';
 import {Link, withRouter} from 'react-router-dom';
 import { Layout } from 'antd';
-import JSONPretty from 'react-json-pretty';
 import { observable } from 'mobx';
+import ReactJson from 'react-json-view';
 
 const { Content } = Layout;
 
@@ -18,14 +18,17 @@ class Transaction extends React.Component {
   }
 
   render() {
-    console.log(this.props.transactionsStore);
-    const transaction = this.props.transactionsStore.transactions[0] || {};
+    const transaction = this.props.transactionsStore.transactions[0];
     return (
       <Layout className="default-top-layout">
         <Content>
           <h2>Transaction</h2>
-          <h3>{ transaction.transaction_id } </h3>
-          <JSONPretty json={transaction} space={4} />
+          <h3>{ this.transactionId } </h3>
+          {transaction ?
+            <ReactJson src={transaction} style={{wordBreak: 'break-all'}}/>
+            :
+            <h3>Transaction is not exists. Please try again</h3>
+          }
         </Content>
       </Layout>);
   }

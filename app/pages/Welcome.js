@@ -118,7 +118,9 @@ const { Content } = Layout;
 class Welcome extends React.Component {
   render() {
     const { userStore, authStore } = this.props;
-    const { keys } = authStore.values;
+    const { keys, ownerWalletPassword, activeWalletPassword } = authStore.values;
+    console.log(authStore.values);
+    console.log(authStore.values.ownerWalletPassword);
     const { currentUser } = userStore;
     return (
       <Layout className="default-top-layout" id="welcome">
@@ -130,6 +132,11 @@ class Welcome extends React.Component {
               {currentUser.account}
             </Link>
           </h2>
+          <h2>Wallets</h2>
+          <ul className="keys">
+            <li>active wallet password: {activeWalletPassword}</li>
+            <li>owner wallet password: {ownerWalletPassword}</li>
+          </ul>
           <h2>Keys</h2>
           <ul className="keys">
             <li>owner public key: {keys.owner.public}</li>
@@ -137,9 +144,9 @@ class Welcome extends React.Component {
             <li>active public key: {keys.active.public}</li>
             <li>* active private key: {keys.active.private}</li>
           </ul>
-          <h2>Your account has been generated! Your private keys are not saved in
+          <h2>Your account has been generated! Your passwords are not saved in
             server and show just once.<br />
-            Write down private keys in secure place for future use.
+            Write down passwords in secure place for future use.
           </h2>
           <Button href="profile">goto profile</Button>
         </Content>
