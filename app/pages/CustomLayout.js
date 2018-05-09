@@ -13,12 +13,12 @@ const LoggedOutView = (props) => {
       <ul className="nav right-menus">
         <li className="nav-item">
           <Link to="/register" className="nav-link">
-            Sign up
+            Register
           </Link>
         </li>
         <li className="nav-item">
           <Link to="/login" className="nav-link">
-            Sign in
+            Login
           </Link>
         </li>
       </ul>
@@ -95,7 +95,7 @@ class CustomHeader extends React.Component {
 class CustomMain extends React.Component {
   render() {
     return (
-      <Content style={{ minHeight: '100vh', paddingTop: '65px', paddingBottom: '70px' }}>
+      <Content style={{ minHeight: '100vh', paddingTop: '65px', paddingBottom: '70px', display: 'flex', alignItems: 'center' }}>
         {this.props.children}
       </Content>
     );

@@ -53,7 +53,7 @@ class Home extends React.Component {
           <h4>Request faucet has been successfully requested.</h4>
           <h4>requested quantity: {this.faucetQuantity} <br/>transaction id: <Link to={`/tx/${this.transactionId}`}>{this.transactionId}</Link></h4>
         </Modal>
-        <h1> My EOS Wallet </h1>
+        <h1><b>My EOS Wallet</b></h1>
         <LogoBox />
         {currentUser ?
           <Content className="home-body">
@@ -75,7 +75,7 @@ class Home extends React.Component {
         }
 
         <Content className="how-it-works">
-          <h2>How it Works</h2>
+          <h2><a href="https://github.com/Game-X-Coin/eos_web_wallet_client/blob/master/docs/howto.md" target="_blank">How it Works</a></h2>
         </Content>
       </Layout>);
   }
