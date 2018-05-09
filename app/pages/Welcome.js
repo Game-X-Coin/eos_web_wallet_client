@@ -145,10 +145,10 @@ class Welcome extends React.Component {
             <li>* active private key: {keys.active.private}</li>
           </ul>
           <h2>Your account has been generated! Your passwords are not saved in
-            server and show just once.<br />
+            server and only shown just once.<br />
             Write down passwords in secure place for future use.
           </h2>
-          <Button href="profile">goto profile</Button>
+          <Button><Link to="profile">goto profile</Link></Button>
         </Content>
       </Layout>
     );

@@ -56,16 +56,15 @@ class Home extends React.Component {
         <h1> My EOS Wallet </h1>
         <LogoBox />
         {currentUser ?
-          <Content className="links">
+          <Content className="home-body">
             <h2>Welcome<br /><Link to="/@currentUser.account">{currentUser.account}</Link></h2>
             <div>balance: {currentUser.balance} </div>
             <Link to="/wallets">goto Wallet Management</Link>
-            <br />
-            <br />
-
-            <Button onClick={::this.requestFaucet}>Request EOS Faucet</Button>
-            <Button onClick={::this.gotoNewTransaction}>Make transaction</Button>
-            <Button onClick={::this.gotoWallets}>Wallet management</Button>
+            <div className="buttons">
+              <Button onClick={::this.requestFaucet}>Request EOS Faucet</Button>
+              <Button onClick={::this.gotoNewTransaction}>Make transaction</Button>
+              <Button onClick={::this.gotoWallets}>Wallet management</Button>
+            </div>
           </Content>
           :
           <Content className="links">

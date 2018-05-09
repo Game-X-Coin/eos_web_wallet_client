@@ -12,6 +12,11 @@ const LoggedOutView = (props) => {
     return (
       <ul className="nav right-menus">
         <li className="nav-item">
+          <Link to="/register" className="nav-link">
+            Sign up
+          </Link>
+        </li>
+        <li className="nav-item">
           <Link to="/login" className="nav-link">
             Sign in
           </Link>
@@ -78,7 +83,7 @@ class CustomHeader extends React.Component {
             value="gxc"
             onChange={this.handleChangeServer}
           >
-            <Option value="gxc">Decipher Testnet</Option>
+            <Option value="gxc">GXC Testnet</Option>
             <Option value="public" onClick={this.showNowYet}>Public Testnet</Option>
           </Select>
         </div>
@@ -101,7 +106,7 @@ class CustomFooter extends React.Component {
   render() {
     return (
       <Footer style={{ textAlign: 'center', position: 'fixed', width: '100%', bottom: '0' }}>
-        EOS Web Wallet ©2018 Created by Decipher x GXC
+        EOS Web Wallet ©2018 Created by GXC x Decipher
       </Footer>
     );
   }

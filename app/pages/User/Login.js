@@ -36,7 +36,7 @@ class Login extends React.Component {
       <Layout className="default-top-layout">
         <Content className="">
           <Form onSubmit={this.handleSubmit.bind(this)} className="login-form">
-            <h1>Login on EOS Wallet</h1>
+            <h1>Login</h1>
             <LogoBox />
             <FormItem>
               {getFieldDecorator('email', {
@@ -47,7 +47,7 @@ class Login extends React.Component {
                   }],
               })(<Input
                 prefix={<Icon
-                  type="user"
+                  type="mail"
                   style={{ color: 'rgba(0,0,0,.25)' }}
                 />}
                 placeholder="Email"
@@ -75,7 +75,6 @@ class Login extends React.Component {
                 valuePropName: 'checked',
                 initialValue: true,
               })(<Checkbox>Remember me</Checkbox>)}
-              <a className="login-form-forgot" href="">Forgot password</a>
               <Button
                 type="primary"
                 htmlType="submit"
