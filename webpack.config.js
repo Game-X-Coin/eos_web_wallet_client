@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-
+const Dotenv = require('dotenv-webpack');
 const config = {
   devtool: 'cheap-module-eval-source-map',
 
@@ -156,6 +156,7 @@ const config = {
         },
       },
     }),
+    new Dotenv(),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new ExtractTextPlugin({ filename: './styles/style.css', disable: false, allChunks: true }),
     new CopyWebpackPlugin([{ from: 'vendors', to: 'vendors' }]),

@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const config = {
   devtool: 'cheap-module-source-map',
@@ -23,6 +24,7 @@ const config = {
 
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),
+    new Dotenv(),
     new HtmlWebpackPlugin({
       template: `${__dirname}/app/index.html`,
       filename: 'index.html',

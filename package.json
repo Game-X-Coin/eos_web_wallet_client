@@ -38,6 +38,7 @@
   "dependencies": {
     "antd": "^3.4.1",
     "cross-env": "5.1.4",
+    "dotenv-webpack": "^1.5.5",
     "mobx": "^4.1.1",
     "mobx-react": "^5.0.0",
     "passport-http-bearer": "^1.0.1",
