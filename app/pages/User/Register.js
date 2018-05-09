@@ -41,7 +41,7 @@ class Register extends React.Component {
             onSubmit={this.handleSubmit.bind(this)}
             className="register-form"
           >
-            <h1>Sign up</h1>
+            <h1>Register</h1>
             <LogoBox />
             <FormItem>
               {getFieldDecorator('email', {
@@ -95,7 +95,7 @@ class Register extends React.Component {
               htmlType="submit"
               className="login-form-button"
             >
-              Sign up
+              Register
             </Button>
 
           </Form>
