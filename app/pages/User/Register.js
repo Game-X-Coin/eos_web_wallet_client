@@ -41,7 +41,7 @@ class Register extends React.Component {
             onSubmit={this.handleSubmit.bind(this)}
             className="register-form"
           >
-            <h1>Register on EOS Wallet</h1>
+            <h1>Sign up</h1>
             <LogoBox />
             <FormItem>
               {getFieldDecorator('email', {

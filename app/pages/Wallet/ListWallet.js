@@ -1,22 +1,23 @@
 import React from 'react';
-import { inject, observer } from 'mobx-react';
-import { Link, withRouter } from 'react-router-dom';
-import { Badge, Button, Col, Icon, Input, Layout, Modal, Row } from 'antd';
-import { action, observable } from 'mobx';
+import {inject, observer} from 'mobx-react';
+import {Link, withRouter} from 'react-router-dom';
+import {Badge, Button, Col, Icon, Input, Layout, Modal, Row} from 'antd';
+import {action, observable} from 'mobx';
 import agent from '../../agent';
 
-const { Content } = Layout;
+const {Content} = Layout;
 
 @inject('commonStore', 'walletsStore')
 @withRouter
 @observer
 class ListWallet extends React.Component {
-  componentDidMount() {
-    this.props.walletsStore.loadWallets();
-  }
   @observable createWalletModalShown = false;
   @observable walletName = null;
   @observable walletPassword = null;
+
+  componentDidMount() {
+    this.props.walletsStore.loadWallets();
+  }
 
   @action showCreateWalletModal() {
     this.createWalletModalShown = true;
@@ -37,7 +38,7 @@ class ListWallet extends React.Component {
   }
 
   render() {
-    const { wallets, isLoading } = this.props.walletsStore;
+    const {wallets, isLoading} = this.props.walletsStore;
     return (
       <Layout className="default-top-layout">
         <Modal
@@ -48,20 +49,21 @@ class ListWallet extends React.Component {
         >
           <Input
             placeholder="wallet name"
-            onChange={(e) => { this.walletName = e.target.value; }}
+            onChange={(e) => {
+              this.walletName = e.target.value;
+            }}
           />
-          { this.walletPassword && <div>
+          {this.walletPassword && <div>
             <h3>EOS Wallet has created!</h3>
-            <h3>{ `password: ${this.walletPassword}` }</h3>
+            <h3>{`password: ${this.walletPassword}`}</h3>
             <h4>** password are only showed once.</h4>
-          </div> }
+          </div>}
         </Modal>
         <Content>
           <h2>wallets: </h2>
           <Row
             gutter={16}
           >
-
             {wallets.map((wallet) => {
               return (
                 <Col
@@ -73,12 +75,12 @@ class ListWallet extends React.Component {
                   xxl={6}
                   key={wallet.id}
                   style={{
-                              display: 'flex',
-                              flexDirection: 'column',
-                              justifyContent: 'space-around',
-                            }}
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-around',
+                  }}
                 >
-                  <p style={{ textAlign: 'center' }}><Badge
+                  <p style={{textAlign: 'center'}}><Badge
                     status="processing"
                   />{wallet.walletName}
                   </p>
