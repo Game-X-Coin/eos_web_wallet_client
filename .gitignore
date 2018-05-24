@@ -73,3 +73,6 @@ dist
 
 #env
 .env
+
+#ignore
+.vscode
