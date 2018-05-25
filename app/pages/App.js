@@ -5,6 +5,7 @@ import { inject, observer } from 'mobx-react';
 // import PrivateRoute from './PrivateRoute';
 import Home from './Home';
 import Login from './User/Login';
+import Authorize from './User/Authroize';
 import Profile from './User/Profile';
 import Register from './User/Register';
 import ListWallet from './Wallet/ListWallet';
@@ -41,6 +42,7 @@ export default class App extends React.Component {
             <Switch>
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
+              <Route path="/authorize" component={Authorize} />
               <Route path="/wallets/create" component={CreateWallet} />
               <Route path="/wallets" component={ListWallet} />
               <Route path="/welcome" component={Welcome} />
