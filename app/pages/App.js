@@ -1,6 +1,6 @@
 import React from 'react';
-import {Switch, Route, withRouter} from 'react-router-dom';
-import {inject, observer} from 'mobx-react';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import { inject, observer } from 'mobx-react';
 
 // import PrivateRoute from './PrivateRoute';
 import Home from './Home';
@@ -10,7 +10,7 @@ import Profile from './User/Profile';
 import Register from './User/Register';
 import ListWallet from './Wallet/ListWallet';
 import CreateWallet from './Wallet/CreateWallet';
-import {CustomFooter, CustomMain, CustomHeader} from './CustomLayout';
+import { CustomFooter, CustomMain, CustomHeader } from './CustomLayout';
 
 import Welcome from './Welcome';
 import Transaction from './Blockchain/Transaction';
@@ -28,40 +28,39 @@ export default class App extends React.Component {
 
   componentDidMount() {
     if (this.props.commonStore.token) {
-      this.props.userStore.pullUser().
-        finally(() => this.props.commonStore.setAppLoaded());
+      this.props.userStore.pullUser()
+        .finally(() => this.props.commonStore.setAppLoaded());
     }
   }
 
   render() {
+    if (this.props.location.pathname === '/authorize') {
+      return <div><Route path="/authorize" component={Authorize} /></div>
+    }
     if (this.props.commonStore.appLoaded) {
       return (
         <div>
-          <Switch>
-            <Route path="/authorize" component={Authorize}/>
-            <div>
-              <CustomHeader/>
-              <CustomMain>
-                <Route path="/login" component={Login}/>
-                <Route path="/register" component={Register}/>
-                <Route path="/wallets/create" component={CreateWallet}/>
-                <Route path="/wallets" component={ListWallet}/>
-                <Route path="/welcome" component={Welcome}/>
-                <Route path="/@:username" component={Profile}/>
-                <Route path="/tx/new" component={NewTransaction}/>
-                <Route path="/tx/:transactionId" component={Transaction}/>
-                <Route path="/" component={Home}/>
-              </CustomMain>
-              <CustomFooter/>
-            </div>
+          <CustomHeader />
+          <CustomMain>
+            <Switch>
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
 
-
-          </Switch>
+              <Route path="/wallets/create" component={CreateWallet} />
+              <Route path="/wallets" component={ListWallet} />
+              <Route path="/welcome" component={Welcome} />
+              <Route path="/@:username" component={Profile} />
+              <Route path="/tx/new" component={NewTransaction} />
+              <Route path="/tx/:transactionId" component={Transaction} />
+              <Route path="/" component={Home} />
+            </Switch>
+          </CustomMain>
+          <CustomFooter />
         </div>
       );
     }
     return (
-      <CustomHeader/>
+      <CustomHeader />
     );
   }
 }

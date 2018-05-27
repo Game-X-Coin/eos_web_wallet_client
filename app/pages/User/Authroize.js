@@ -40,7 +40,7 @@ class Authorize extends React.Component {
         <Content className="">
           <h1>GXC Quest Login</h1>
           <LogoBox />
-          <form method="post" action="http://localhost:3000/v1/oauth/authorize">
+          <form method="post" action={`${API_ROOT}/oauth/authorize`}>
             <input type="hidden" value={this.transactionId} name="transaction_id" />
             <input type="hidden" value={this.props.commonStore.token} name="jwt" />
             <div className="buttons">
