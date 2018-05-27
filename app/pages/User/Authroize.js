@@ -12,6 +12,7 @@ const { Content } = Layout;
 const { API_ROOT } = process.env;
 
 @inject('authStore')
+@inject('commonStore')
 @observer
 class Authorize extends React.Component {
 
@@ -35,18 +36,18 @@ class Authorize extends React.Component {
 
   render() {
     return (
-      <Layout className="default-top-layout">
+      <Layout className="default-top-layout authorize-popup">
         <Content className="">
-          <h1>Dgame Authorize</h1>
+          <h1>GXC Quest Login</h1>
           <LogoBox />
-          <input type="text" value={this.transactionId} onChange={(e)=> this.transactionId = e.target.value }/>
-          <Button type="primary" onClick={this.onAuthorize}>submit</Button>
-          <Button type="primary" htmlType="submit">cancel</Button>
+          <form method="post" action="http://localhost:3000/v1/oauth/authorize">
+            <input type="hidden" value={this.transactionId} name="transaction_id" />
+            <input type="hidden" value={this.props.commonStore.token} name="jwt" />
+            <div className="buttons">
+              <Button type="primary" htmlType="submit">Submit</Button>
+            </div>
+          </form>
         </Content>
-        <form method="post" action="http://localhost:3000/v1/oauth/authorize">
-          <input type="hidden" value={this.transactionId} name="transaction_id" />
-          <input type="submit" value='submit' />
-        </form>
       </Layout>
     );
   }
