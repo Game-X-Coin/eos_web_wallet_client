@@ -1,4 +1,4 @@
-# eos web wallet client
+# GXC web wallet client
 
 team GXC with decipher
 

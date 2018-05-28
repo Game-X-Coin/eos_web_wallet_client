@@ -1,7 +1,7 @@
 {
-  "name": "eos-web-wallet-cleint",
+  "name": "gxc-web-wallet-cleint",
   "version": "2.1.0",
-  "description": "eos web wallet client",
+  "description": "gxc web wallet client",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",

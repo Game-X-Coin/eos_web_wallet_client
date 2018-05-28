@@ -37,7 +37,7 @@ class Send extends React.Component {
     return (
       <Layout className="default-top-layout">
         <Form layout="inline" style={{ margin: '0 auto' }}onSubmit={this.handleSubmit}>
-          <h1> {console.log(this.props.match.params.address)} send EOS </h1>
+          <h1> {console.log(this.props.match.params.address)} send GXC </h1>
 
           <FormItem
             validateStatus={userNameError ? 'error' : ''}
@@ -53,7 +53,7 @@ class Send extends React.Component {
           >
             {getFieldDecorator('password', {
                 rules: [{ required: true, message: 'Please input your Password!' }],
-              })(<Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="user" placeholder="amount(EOS)" />)}
+              })(<Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="user" placeholder="amount(GXC)" />)}
           </FormItem>
           <FormItem>
             <Button

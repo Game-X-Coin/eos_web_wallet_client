@@ -1,4 +1,4 @@
-# My EOS Wallet
+# My GXC Wallet
 
 ## How it Works
 

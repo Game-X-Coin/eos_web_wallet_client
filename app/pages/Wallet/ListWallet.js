@@ -54,7 +54,7 @@ class ListWallet extends React.Component {
             }}
           />
           {this.walletPassword && <div>
-            <h3>EOS Wallet has created!</h3>
+            <h3>GXC Wallet has created!</h3>
             <h3>{`password: ${this.walletPassword}`}</h3>
             <h4>** password are only showed once.</h4>
           </div>}

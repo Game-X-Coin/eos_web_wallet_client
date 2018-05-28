@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 import { Layout, Select, message } from 'antd';
 
+import logo from '../assets/images/logo.svg';
+
 const { Header, Content, Footer } = Layout;
 const { Option } = Select;
-
 
 const LoggedOutView = (props) => {
   if (!props.currentUser) {
@@ -67,10 +68,7 @@ class CustomHeader extends React.Component {
       <Header className="header" style={{ position: 'fixed', width: '100%' }}>
         <div className="logo">
           <Link to="/">
-            <img
-              src={require('./../assets/images/eos-logo.png')}
-              alt="eos-logo"
-            />
+            <img src={logo} alt="gxc-logo" />
           </Link>
         </div>
         <div className="right-menu">
@@ -79,7 +77,6 @@ class CustomHeader extends React.Component {
           <Select
             className="select-server"
             defaultValue="gxc"
-            style={{ width: 120 }}
             value="gxc"
             onChange={this.handleChangeServer}
           >
@@ -106,7 +103,7 @@ class CustomFooter extends React.Component {
   render() {
     return (
       <Footer style={{ textAlign: 'center', position: 'fixed', width: '100%', bottom: '0' }}>
-        EOS Web Wallet ©2018 Created by GXC x Decipher
+        GXC Web Wallet ©2018 Created by GXC x Decipher
       </Footer>
     );
   }
