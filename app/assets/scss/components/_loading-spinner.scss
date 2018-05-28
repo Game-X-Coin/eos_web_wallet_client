@@ -1,0 +1,62 @@
+$yellow: #FFD111;
+$red: #FF4B34;
+$blue: #0070BE;
+$green: #33BA20;
+
+@keyframes roll {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+    border-top-color: $yellow;
+  }
+  
+  25% {
+    transform: translate(-50%, -50%) rotate(90deg);
+    border-top-color: $red;
+  }
+  
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg);
+    border-top-color: $blue;
+  }
+  
+  75% {
+    transform: translate(-50%, -50%) rotate(270deg);
+    border-top-color: $green;
+  }
+  
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+    border-top-color: $red;
+  }
+}
+
+.loading-spinner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.75);
+
+  &__roll,
+  &__logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__roll {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 100%;
+    border-top: 3px solid $yellow;
+    animation: roll 0.75s linear infinite;
+  }
+
+  &__logo {
+    width: 4rem;
+    height: 4rem;
+  }
+}

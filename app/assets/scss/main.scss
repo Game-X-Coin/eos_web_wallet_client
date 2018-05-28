@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
+
 @import "sizes";
+@import 'components/all';
+
 body {
   font-family: 'PT Sans', sans-serif;
 }
@@ -11,8 +14,6 @@ h1 {
 .ant-layout-header {
   display: flex;
   justify-content: space-between;
-  max-width: $max-screen-width;
-  padding: 0;
   margin: 0 auto;
   a {
     color: black;
@@ -39,11 +40,10 @@ h1 {
 
 .login-form, .register-form {
   margin: 0 auto !important;
-  max-width: 550px;
+  max-width: 350px;
   h1 {
     text-align: center;
   }
-
 }
 
 .login-form-forgot {
@@ -57,7 +57,7 @@ h1 {
 .right-menus {
   display: flex;
   li {
-    padding: 0 10px;
+    padding: 0 20px;
   }
 }
 
@@ -77,7 +77,7 @@ h1 {
 .header {
   .logo {
     img {
-      width: 45px;
+      width: 125px;
     }
   }
 }
@@ -87,6 +87,8 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 2rem 0 4rem 0;
+
   .logo {
     width: 200px;
     margin-bottom: 15px;
