@@ -30,7 +30,6 @@ export default class Profile extends React.Component {
     return (
       <Layout className="default-top-layout" id="profile">
         <h1>Profile</h1>
-        <LogoBox />
         <div className="box">
           <h2>account: {currentUser.account}</h2>
           <h2>Keys</h2>

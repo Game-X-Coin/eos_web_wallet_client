@@ -124,7 +124,6 @@ class Welcome extends React.Component {
     const { currentUser } = userStore;
     return (
       <Layout className="default-top-layout" id="welcome">
-        <h1 style={{ textAlign: 'center' }}> My EOS Wallet </h1>
         <LogoBox />
         <Content className="links">
           <h2>Welcome!

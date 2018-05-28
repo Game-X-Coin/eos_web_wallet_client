@@ -16,6 +16,8 @@ import Welcome from './Welcome';
 import Transaction from './Blockchain/Transaction';
 import NewTransaction from './Blockchain/NewTransaction';
 
+import LoadingSpinner from '../components/LoadingSpinner';
+
 @inject('userStore', 'commonStore')
 @withRouter
 @observer
@@ -34,33 +36,58 @@ export default class App extends React.Component {
   }
 
   render() {
-    if (this.props.location.pathname === '/authorize') {
-      return <div><Route path="/authorize" component={Authorize} /></div>
+    const { location, commonStore } = this.props;
+
+    const isPopupWindow = window.opener && window.opener !== window;
+
+    const AuthorizeRoute = () => (
+      <div>
+        <Route path="/authorize" component={Authorize} />
+      </div>
+    );
+
+    const Routes = () => (
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+
+        <Route path="/wallets/create" component={CreateWallet} />
+        <Route path="/wallets" component={ListWallet} />
+        <Route path="/welcome" component={Welcome} />
+        <Route path="/@:username" component={Profile} />
+        <Route path="/tx/new" component={NewTransaction} />
+        <Route path="/tx/:transactionId" component={Transaction} />
+        <Route path="/" component={Home} />
+      </Switch>
+    );
+
+    if (location.pathname === '/authorize') {
+      return <AuthorizeRoute />;
     }
-    if (this.props.commonStore.appLoaded) {
+
+    if (commonStore.appLoaded) {
       return (
         <div>
-          <CustomHeader />
-          <CustomMain>
-            <Switch>
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-
-              <Route path="/wallets/create" component={CreateWallet} />
-              <Route path="/wallets" component={ListWallet} />
-              <Route path="/welcome" component={Welcome} />
-              <Route path="/@:username" component={Profile} />
-              <Route path="/tx/new" component={NewTransaction} />
-              <Route path="/tx/:transactionId" component={Transaction} />
-              <Route path="/" component={Home} />
-            </Switch>
-          </CustomMain>
-          <CustomFooter />
+          {!isPopupWindow
+            ? (
+              <React.Fragment>
+                <CustomHeader />
+                <CustomMain>
+                  <Routes />
+                </CustomMain>
+                <CustomFooter />
+              </React.Fragment>
+            )
+            : <Routes />
+          }
         </div>
       );
     }
     return (
-      <CustomHeader />
+      <div>
+        {!isPopupWindow && <CustomHeader />}
+        <LoadingSpinner />
+      </div>
     );
   }
 }

@@ -36,7 +36,6 @@ class Login extends React.Component {
       <Layout className="default-top-layout">
         <Content className="">
           <Form onSubmit={this.handleSubmit.bind(this)} className="login-form">
-            <h1>Login</h1>
             <LogoBox />
             <FormItem>
               {getFieldDecorator('email', {
