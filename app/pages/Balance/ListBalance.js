@@ -23,6 +23,8 @@ class ListBalance extends Component {
       ...tokens[key],
     }));
 
+    console.log(tokenData);
+
     return (
       <Layout className="default-top-layout">
         <Layout.Content className="list-balance-page">
@@ -39,8 +41,9 @@ class ListBalance extends Component {
             {tokenData.map(token => (
               <div
                 className="balance"
+                key={token.name}
                 style={{
-                  borderBottom: `4px solid ${token.color}`,
+                  borderBottom: `5px solid ${token.color}`,
                 }}
               >
                 <h3>{token.balance} {token.name}</h3>
