@@ -4,18 +4,19 @@ import { inject, observer } from 'mobx-react';
 
 import { tokens } from '../../constants';
 
+@inject('balancesStore')
 @inject('userStore')
 @observer
 class ListBalance extends Component {
+  componentWillMount() {
+    console.log(this.props.balancesStore);
+    console.log(this.props.userStore.currentUser);
+    this.props.balancesStore.loadBalances(this.props.userStore.currentUser.account);
+  }
+
   render() {
     const { currentUser } = this.props.userStore;
-
-    const data = {
-      GXQ: '10.120',
-      BLS: '0.000',
-      SPN: '0.000',
-      ACA: '0.000',
-    };
+    const { data } = this.props.balancesStore;
 
     const tokenData = Object.keys(data).map(key => ({
       name: key,

@@ -5,6 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Layout, Divider, Button, Modal } from 'antd';
 import LogoBox from '../../components/LogoBox';
 import agent from '../../agent';
+import ListBalance from '../Balance/ListBalance';
 
 const { Content } = Layout;
 
@@ -58,6 +59,7 @@ class Home extends React.Component {
           <Content className="home-body">
             <h2>Welcome <Link to="/@currentUser.account">{currentUser.account}</Link></h2>
             <h3>Your balance: <Link to="/balances">{currentUser.balance}</Link></h3>
+            <ListBalance />
             <div className="buttons">
               <Button onClick={::this.requestFaucet}>Request GXC Faucet</Button>
               <Button onClick={::this.gotoNewTransaction}>Make transaction</Button>

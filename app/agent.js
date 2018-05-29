@@ -121,6 +121,8 @@ const Wallets = {
 const EOS = {
   requestFaucet: () =>
     requests.post('/eos/request_faucet'),
+  balances: (accountName) =>
+    requests.get(`/eos/balances?accountName=${accountName}`),
 }
 
 const Transactions = {

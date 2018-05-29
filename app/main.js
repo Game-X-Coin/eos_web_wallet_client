@@ -10,6 +10,7 @@ import commonStore from './stores/commonStore';
 import userStore from './stores/userStore';
 import profileStore from './stores/profileStore';
 import walletsStore from './stores/walletsStore';
+import balancesStore from './stores/balancesStore';
 import transactionsStore from './stores/transactionsStore';
 import './assets/scss/antd.less';
 import './assets/scss/main.scss';
@@ -22,6 +23,7 @@ const stores = {
   profileStore,
   transactionsStore,
   walletsStore,
+  balancesStore,
 };
 
 const render = (Component) => {
