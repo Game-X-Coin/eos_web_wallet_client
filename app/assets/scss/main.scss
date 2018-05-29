@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700');
 
-@import "sizes";
+@import 'sizes';
 @import 'components/all';
 
 body {
@@ -12,9 +12,10 @@ h1 {
 }
 
 .ant-layout-header {
-  display: flex;
-  justify-content: space-between;
+  position: fixed;
+  width: 100%;
   margin: 0 auto;
+  box-shadow: 0 3px 5px 0 rgba(7, 7, 7, 0.16);
   a {
     color: black;
   }
@@ -24,11 +25,10 @@ h1 {
   }
   .right-menu {
     display: flex;
-    align-items: center;
+    align-items: baseline;
   }
   li {
     list-style: none;
-    margin-top: 13px;
   }
 }
 
@@ -75,6 +75,13 @@ h1 {
 }
 
 .header {
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    max-width: $max-screen-width;
+  }
+
   .logo {
     img {
       width: 125px;

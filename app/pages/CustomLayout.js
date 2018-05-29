@@ -65,24 +65,26 @@ class CustomHeader extends React.Component {
 
   render() {
     return (
-      <Header className="header" style={{ position: 'fixed', width: '100%' }}>
-        <div className="logo">
-          <Link to="/">
-            <img src={logo} alt="gxc-logo" />
-          </Link>
-        </div>
-        <div className="right-menu">
-          <LoggedOutView currentUser={this.props.userStore.currentUser} />
-          <LoggedInView currentUser={this.props.userStore.currentUser} />
-          <Select
-            className="select-server"
-            defaultValue="gxc"
-            value="gxc"
-            onChange={this.handleChangeServer}
-          >
-            <Option value="gxc">GXC Testnet</Option>
-            <Option value="public" onClick={this.showNowYet}>Public Testnet</Option>
-          </Select>
+      <Header className="header">
+        <div className="header-wrapper">
+          <div className="logo">
+            <Link to="/">
+              <img src={logo} alt="gxc-logo" />
+            </Link>
+          </div>
+          <div className="right-menu">
+            <LoggedOutView currentUser={this.props.userStore.currentUser} />
+            <LoggedInView currentUser={this.props.userStore.currentUser} />
+            <Select
+              className="select-server"
+              defaultValue="gxc"
+              value="gxc"
+              onChange={this.handleChangeServer}
+            >
+              <Option value="gxc">GXC Testnet</Option>
+              <Option value="public" onClick={this.showNowYet}>Public Testnet</Option>
+            </Select>
+          </div>
         </div>
       </Header>
     );
