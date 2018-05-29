@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Button, params, Form, Icon, Input, Layout, message } from 'antd';
@@ -13,12 +13,23 @@ const { API_ROOT } = process.env;
 
 @inject('authStore')
 @inject('commonStore')
+@inject('userStore')
 @observer
 class Authorize extends React.Component {
 
   @observable transactionId = '';
   componentWillMount() {
+    const { authStore, userStore } = this.props;
     let params = qs.parse(window.location.search);
+    console.log(window.location);
+    console.log(window.location.pathname);
+    if(!userStore.currentUser) {
+      authStore.redirectParams = {
+        to: window.location.pathname + window.location.search
+      };
+      return this.props.history.push('/register');
+    }
+
     this.redirectUri = params.redirect_uri;
     agent.Oauth.getTransaction(params)
       .then( res => { console.log(res); this.transactionId = res.transactionId});

@@ -16,6 +16,7 @@ import { CustomFooter, CustomMain, CustomHeader } from './CustomLayout';
 import Welcome from './Welcome';
 import Transaction from './Blockchain/Transaction';
 import NewTransaction from './Blockchain/NewTransaction';
+import PrivateRoute from './PrivateRoute';
 
 import LoadingSpinner from '../components/LoadingSpinner';
 
@@ -37,6 +38,7 @@ export default class App extends React.Component {
   }
 
   render() {
+
     const { location, commonStore } = this.props;
 
     const isPopupWindow = window.opener && window.opener !== window;

@@ -17,6 +17,7 @@ class Register extends React.Component {
   }
 
   async handleSubmit(e) {
+    const { authStore } = this.props;
     e.preventDefault();
     this.props.form.validateFields(async (err, values) => {
       if (err) return;
@@ -25,6 +26,9 @@ class Register extends React.Component {
       this.props.authStore.setPassword(values.password);
       try {
         await this.props.authStore.register();
+        if (authStore.redirectParams && authStore.redirectParams.to) {
+          return this.props.history.push(authStore.redirectParams.to);
+        }
         this.props.history.replace('/welcome');
       } catch (errors) {
         showApiError(errors);
@@ -33,6 +37,8 @@ class Register extends React.Component {
   }
 
   render() {
+    console.log(this.props)
+    console.log(this.state)
     const { getFieldDecorator } = this.props.form;
     return (
       <Layout className="default-top-layout">

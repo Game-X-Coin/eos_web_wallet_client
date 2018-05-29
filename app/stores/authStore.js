@@ -6,7 +6,7 @@ import commonStore from './commonStore';
 class AuthStore {
   @observable inProgress = false;
   @observable errors = undefined;
-
+  @observable redirectParams = {};
   @observable values = {
     account: '',
     email: '',
