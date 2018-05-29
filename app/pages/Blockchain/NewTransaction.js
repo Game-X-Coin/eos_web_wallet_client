@@ -5,13 +5,14 @@ import { Layout, Form, Input, Icon, Button, Select, Modal } from 'antd';
 import { observable } from 'mobx';
 import { showApiError } from '../../utils';
 import agent from '../../agent';
+import ListBalance from '../Balance/ListBalance';
 
 const { Item: FormItem } = Form;
 const { Option } = Select;
 
 const { Content } = Layout;
 
-@inject('commonStore', 'userStore', 'walletsStore')
+@inject('commonStore', 'userStore', 'walletsStore', 'balancesStore')
 @withRouter
 @observer
 class NewTransaction extends React.Component {
@@ -19,7 +20,7 @@ class NewTransaction extends React.Component {
   @observable transactionQuantity = 0.0;
   @observable transactionId = null;
 
-  componentDidMount() {
+  componentWillMount() {
     this.transactionId = this.props.match.params.transactionId;
     this.props.walletsStore.loadWallets();
   }
@@ -43,10 +44,10 @@ class NewTransaction extends React.Component {
   }
 
   render() {
-    const { currentUser } = this.props.userStore;
     const { getFieldDecorator } = this.props.form;
     const { wallets } = this.props.walletsStore;
-
+    const { data: balances } = this.props.balancesStore;
+    const tokens = Object.keys(balances).map(key => key);
     return (
       <Layout className="default-top-layout">
         <Modal
@@ -60,11 +61,11 @@ class NewTransaction extends React.Component {
         </Modal>
         <Content>
           <h2>New Transaction</h2>
-          <h3>you balance: {currentUser.balance} </h3>
           <Form
             onSubmit={this.handleSubmit.bind(this)}
             className="register-form"
           >
+            {false &&
             <FormItem>
               {getFieldDecorator('wallet', {
                 rules: [
@@ -77,6 +78,19 @@ class NewTransaction extends React.Component {
                   { wallets.map( wallet => <Option value={wallet.id}>{wallet.walletName}</Option>)}
                 </Select>
               )}
+            </FormItem> }
+            <FormItem>
+              {getFieldDecorator('symbol', {
+                rules: [
+                  {
+                    required: true,
+                    message: 'select token symbol',
+                  }],
+              })(
+                <Select style={{ width: 120 }}>
+                  { tokens.map( token => <Option key={token} value={token}>{token}</Option>)}
+                </Select>
+              )}
             </FormItem>
             <FormItem>
               {getFieldDecorator('to', {
@@ -86,7 +100,11 @@ class NewTransaction extends React.Component {
                     message: 'Please input your username!',
                   }],
               })(<Input
-                placeholder="Account to receive coin"
+                prefix={<Icon
+                  type="user"
+                  style={{color: 'rgba(0,0,0,.25)'}}
+                />}
+                placeholder="To Account"
               />)}
             </FormItem>
             <FormItem>
@@ -112,6 +130,7 @@ class NewTransaction extends React.Component {
               Make transaction
             </Button>
           </Form>
+          <ListBalance noHeader />
         </Content>
       </Layout>);
   }

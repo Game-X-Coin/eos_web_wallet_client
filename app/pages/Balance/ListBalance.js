@@ -29,12 +29,14 @@ class ListBalance extends Component {
     return (
       <Layout className="default-top-layout">
         <Layout.Content className="list-balance-page">
-          <div className="header">
-            <h1 className="title">My GXC</h1>
-            <p className="total-balance">
-              <span className="highlight">{currentUser.balance}</span>GXC
-            </p>
-          </div>
+          { !this.props.noHeader &&
+            <div className="header">
+              <h1 className="title">My GXC</h1>
+              <p className="total-balance">
+                <span className="highlight">{currentUser.balance}</span>GXC
+              </p>
+            </div>
+          }
 
           <p className="description">Retention Tokens by Game</p>
 
