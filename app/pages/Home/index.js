@@ -53,15 +53,13 @@ class Home extends React.Component {
           <h4>Request faucet has been successfully requested.</h4>
           <h4>requested quantity: {this.faucetQuantity} <br/>transaction id: <Link to={`/tx/${this.transactionId}`}>{this.transactionId}</Link></h4>
         </Modal>
-        <h1><b>My EOS Wallet</b></h1>
         <LogoBox />
         {currentUser ?
           <Content className="home-body">
-            <h2>Welcome<br /><Link to="/@currentUser.account">{currentUser.account}</Link></h2>
-            <div>balance: {currentUser.balance} </div>
-            <Link to="/wallets">goto Wallet Management</Link>
+            <h2>Welcome <Link to="/@currentUser.account">{currentUser.account}</Link></h2>
+            <h3>Your balance: <Link to="/balances">{currentUser.balance}</Link></h3>
             <div className="buttons">
-              <Button onClick={::this.requestFaucet}>Request EOS Faucet</Button>
+              <Button onClick={::this.requestFaucet}>Request GXC Faucet</Button>
               <Button onClick={::this.gotoNewTransaction}>Make transaction</Button>
               <Button onClick={::this.gotoWallets}>Wallet management</Button>
             </div>
