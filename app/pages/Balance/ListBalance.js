@@ -48,7 +48,12 @@ class ListBalance extends Component {
                 }}
               >
                 <h3>{token.balance} {token.name}</h3>
-                <img src={token.img} alt={token.name} />
+                { token.img ?
+
+                  <a href={token.gameUrl} target="_blank"><img src={token.img} alt={token.name} /></a>
+                  : <h4>Coming Soon!</h4>
+                }
+
               </div>
             ))}
           </div>

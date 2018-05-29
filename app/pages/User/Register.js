@@ -26,11 +26,9 @@ class Register extends React.Component {
       this.props.authStore.setPassword(values.password);
       try {
         await this.props.authStore.register();
-        console.log('helllooo')
         if (authStore.redirectParams && authStore.redirectParams.to) {
           return this.props.history.push(authStore.redirectParams.to);
         }
-        console.log('hihi');
         this.props.history.push('/welcome');
       } catch (errors) {
         console.error(errors);

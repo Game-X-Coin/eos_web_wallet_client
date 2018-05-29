@@ -7,17 +7,18 @@ export default {
   GXQ: {
     img: getTokenImage('gxq.png'),
     color: '#FFD111',
+    gameUrl: 'http://gamexcoin.io:8000',
   },
   BLS: {
-    img: getTokenImage('bls.png'),
+    // img: getTokenImage('bls.png'),
     color: '#FF4B34',
   },
   SPN: {
-    img: getTokenImage('spn.png'),
+    // img: getTokenImage('spn.png'),
     color: '#0070BE',
   },
   ACA: {
-    img: getTokenImage('aca.png'),
+    // img: getTokenImage('aca.png'),
     color: '#33BA20',
   },
 };
