@@ -51,11 +51,6 @@ class AuthStore {
     return agent.Auth.login(this.values.email, this.values.password)
       .then(({ token }) => commonStore.setToken(token.accessToken))
       .then(() => userStore.pullUser())
-      .catch(action((err) => {
-        this.errors = err.response && err.response.body &&
-          err.response.body.errors;
-        throw (err.response.body);
-      }))
       .finally(action(() => {
         this.inProgress = false;
       }));
@@ -67,20 +62,32 @@ class AuthStore {
     return Promise.resolve();
   }
 
+  // @action register() {
+  //   this.inProgress = true;
+  //   this.errors = undefined;
+  //   return new Promise((resolve, reject) => {
+  //     agent.Auth.register({ account: this.values.account, email: this.values.email, password: this.values.password })
+  //     .then(({
+  //       token, keys, ownerWalletPassword, activeWalletPassword,
+  //     }) => {
+  //       commonStore.setToken(token.accessToken);
+  //       this.setTempValues(keys, ownerWalletPassword, activeWalletPassword);
+  //     }).then(() => userStore.pullUser())
+  //     .catch(reject)
+  //     .finally(action(() => {
+  //       this.inProgress = false;
+  //     }));
+  //   });
+  // }
   @action register() {
     this.inProgress = true;
-    this.errors = undefined;
     return agent.Auth.register({ account: this.values.account, email: this.values.email, password: this.values.password })
       .then(({
         token, keys, ownerWalletPassword, activeWalletPassword,
       }) => {
         commonStore.setToken(token.accessToken);
         this.setTempValues(keys, ownerWalletPassword, activeWalletPassword);
-      }).then(() => userStore.pullUser()).catch(action((err) => {
-        this.errors = err.response && err.response.body &&
-          err.response.body.errors;
-        throw (err.response.body);
-      }))
+      }).then(() => userStore.pullUser())
       .finally(action(() => {
         this.inProgress = false;
       }));

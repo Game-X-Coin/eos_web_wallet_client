@@ -26,19 +26,20 @@ class Register extends React.Component {
       this.props.authStore.setPassword(values.password);
       try {
         await this.props.authStore.register();
+        console.log('helllooo')
         if (authStore.redirectParams && authStore.redirectParams.to) {
           return this.props.history.push(authStore.redirectParams.to);
         }
-        this.props.history.replace('/welcome');
+        console.log('hihi');
+        this.props.history.push('/welcome');
       } catch (errors) {
+        console.error(errors);
         showApiError(errors);
       }
     });
   }
 
   render() {
-    console.log(this.props)
-    console.log(this.state)
     const { getFieldDecorator } = this.props.form;
     return (
       <Layout className="default-top-layout">
@@ -56,6 +57,7 @@ class Register extends React.Component {
                     message: 'Please input your username!',
                   }],
               })(<Input
+                type="email"
                 prefix={<Icon
                   type="mail"
                   style={{ color: 'rgba(0,0,0,.25)' }}

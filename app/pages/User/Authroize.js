@@ -21,8 +21,6 @@ class Authorize extends React.Component {
   componentWillMount() {
     const { authStore, userStore } = this.props;
     let params = qs.parse(window.location.search);
-    console.log(window.location);
-    console.log(window.location.pathname);
     if(!userStore.currentUser) {
       authStore.redirectParams = {
         to: window.location.pathname + window.location.search

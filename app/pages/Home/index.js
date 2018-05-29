@@ -61,7 +61,6 @@ class Home extends React.Component {
             <h3>Your balance: <Link to="/balances">{currentUser.balance}</Link></h3>
             <ListBalance />
             <div className="buttons">
-              <Button onClick={::this.requestFaucet}>Request GXC Faucet</Button>
               <Button onClick={::this.gotoNewTransaction}>Make transaction</Button>
               <Button onClick={::this.gotoWallets}>Wallet management</Button>
             </div>
