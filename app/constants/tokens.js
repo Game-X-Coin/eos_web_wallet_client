@@ -1,4 +1,7 @@
-const getTokenImage = img => require(`../assets/images/tokens/${img}`);
+const getTokenImage = (imgName) => {
+  const img = require(`../assets/images/tokens/${imgName}`);
+  return img.constructor === Object ? img.default : img;
+};
 
 export default {
   GXQ: {
@@ -6,7 +9,7 @@ export default {
     color: '#FFD111',
   },
   BLS: {
-    img: getTokenImage('bls.png').default,
+    img: getTokenImage('bls.png'),
     color: '#FF4B34',
   },
   SPN: {
@@ -14,7 +17,7 @@ export default {
     color: '#0070BE',
   },
   ACA: {
-    img: getTokenImage('aca.png').default,
+    img: getTokenImage('aca.png'),
     color: '#33BA20',
   },
 };
