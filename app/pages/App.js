@@ -56,6 +56,7 @@ export default class App extends React.Component {
         <Route path="/balances" component={ListBalance} />
         <Route path="/wallets/create" component={CreateWallet} />
         <Route path="/wallets" component={ListWallet} />
+        <Route path="/authorize" component={Authorize} />
         <Route path="/welcome" component={Welcome} />
         <Route path="/@:username" component={Profile} />
         <Route path="/tx/new" component={NewTransaction} />
@@ -63,10 +64,6 @@ export default class App extends React.Component {
         <Route path="/" component={Home} />
       </Switch>
     );
-
-    if (location.pathname === '/authorize') {
-      return <AuthorizeRoute />;
-    }
 
     if (commonStore.appLoaded) {
       return (
