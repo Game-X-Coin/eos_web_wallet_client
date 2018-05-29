@@ -1,0 +1,52 @@
+.list-balance-page {
+
+  .header {
+    margin-bottom: 3rem;
+
+    .title {
+      margin-bottom: 0.3rem;
+      font-size: 2rem;
+    }
+
+    .total-balance {
+      font-size: 1.2rem;
+
+      .highlight {
+        margin-right: 0.3rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .description {
+
+  }
+
+  .balances {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .balance {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 13px 15px;
+      margin-bottom: 20px;
+      width: calc(50% - 10px);
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border: solid 1px #bababa;
+
+      h3 {
+        margin: 0;
+      }
+
+      img {
+        height: 1.3rem;
+      }
+    }
+  }
+}

@@ -2,13 +2,10 @@
 
 @import 'sizes';
 @import 'components/all';
+@import 'pages/all';
 
 body {
   font-family: 'PT Sans', sans-serif;
-}
-
-h1 {
-  text-align: center;
 }
 
 .ant-layout-header {
