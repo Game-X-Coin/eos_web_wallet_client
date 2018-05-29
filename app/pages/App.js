@@ -8,6 +8,7 @@ import Login from './User/Login';
 import Authorize from './User/Authroize';
 import Profile from './User/Profile';
 import Register from './User/Register';
+import ListBalance from './Balance/ListBalance';
 import ListWallet from './Wallet/ListWallet';
 import CreateWallet from './Wallet/CreateWallet';
 import { CustomFooter, CustomMain, CustomHeader } from './CustomLayout';
@@ -50,7 +51,7 @@ export default class App extends React.Component {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-
+        <Route path="/balances" component={ListBalance} />
         <Route path="/wallets/create" component={CreateWallet} />
         <Route path="/wallets" component={ListWallet} />
         <Route path="/welcome" component={Welcome} />
