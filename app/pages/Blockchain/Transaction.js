@@ -1,6 +1,6 @@
 import React from 'react';
-import {inject, observer} from 'mobx-react';
-import {Link, withRouter} from 'react-router-dom';
+import { inject, observer } from 'mobx-react';
+import { withRouter } from 'react-router-dom';
 import { Layout } from 'antd';
 import { observable } from 'mobx';
 import ReactJson from 'react-json-view';
@@ -25,7 +25,7 @@ class Transaction extends React.Component {
           <h2>Transaction</h2>
           <h3>{ this.transactionId } </h3>
           {transaction ?
-            <ReactJson src={transaction} style={{wordBreak: 'break-all'}} />
+            <ReactJson src={transaction} style={{ wordBreak: 'break-all' }} />
             :
             <h3>Transaction is not exists. Please try again</h3>
           }

@@ -2,7 +2,6 @@ import { observable, action } from 'mobx';
 import agent from '../agent';
 
 
-
 export class BalancesStore {
     @observable isLoading = false;
     @observable data = {
@@ -20,7 +19,7 @@ export class BalancesStore {
       this.isLoading = true;
       return this.$req(account)
         .then(action(({ balances }) => {
-          this.data = {...this.data, ...balances};
+          this.data = { ...this.data, ...balances };
         }))
         .finally(action(() => {
           this.isLoading = false;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { inject, observer } from 'mobx-react';
 
-// import PrivateRoute from './PrivateRoute';
+
 import Home from './Home';
 import Login from './User/Login';
 import Authorize from './User/Authroize';
@@ -16,7 +16,6 @@ import { CustomFooter, CustomMain, CustomHeader } from './CustomLayout';
 import Welcome from './Welcome';
 import Transaction from './Blockchain/Transaction';
 import NewTransaction from './Blockchain/NewTransaction';
-import PrivateRoute from './PrivateRoute';
 
 import LoadingSpinner from '../components/LoadingSpinner';
 
@@ -38,16 +37,10 @@ export default class App extends React.Component {
   }
 
   render() {
-
-    const { location, commonStore } = this.props;
+    const { commonStore } = this.props;
 
     const isPopupWindow = window.opener && window.opener !== window;
 
-    const AuthorizeRoute = () => (
-      <div>
-        <Route path="/authorize" component={Authorize} />
-      </div>
-    );
 
     const Routes = () => (
       <Switch>

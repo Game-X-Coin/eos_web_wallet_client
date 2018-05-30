@@ -1,8 +1,8 @@
 import { message } from 'antd';
 
-exports.showApiError = function (errors) {
+exports.showApiError = function (errorParam) {
   let str = '';
-  errors = errors.response.data;
+  const errors = errorParam.response.data;
   if (errors.errors) {
     str = errors.errors.map(error => error.messages.join('\n'));
   } else if (errors.messages) {

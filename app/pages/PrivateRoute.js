@@ -16,17 +16,19 @@ import { inject, observer } from 'mobx-react';
 // }
 
 
-
 @inject('userStore', 'commonStore')
 @observer
 class PrivateRoute extends React.Component {
   render() {
     const { userStore, location, ...restProps } = this.props;
     if (userStore.currentUser) return <Route {...restProps} />;
-    return <Redirect to={{
+    return (<Redirect
+      to={{
       pathname: '/register',
       state: { from: location },
-    }} {...restProps} />;
+    }}
+      {...restProps}
+    />);
   }
 }
 

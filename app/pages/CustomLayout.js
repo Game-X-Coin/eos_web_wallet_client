@@ -94,7 +94,10 @@ class CustomHeader extends React.Component {
 class CustomMain extends React.Component {
   render() {
     return (
-      <Content style={{ minHeight: '100vh', paddingTop: '65px', paddingBottom: '70px', display: 'flex', alignItems: 'center' }}>
+      <Content style={{
+ minHeight: '100vh', paddingTop: '65px', paddingBottom: '70px', display: 'flex', alignItems: 'center',
+}}
+      >
         {this.props.children}
       </Content>
     );
@@ -104,7 +107,10 @@ class CustomMain extends React.Component {
 class CustomFooter extends React.Component {
   render() {
     return (
-      <Footer style={{ textAlign: 'center', position: 'fixed', width: '100%', bottom: '0' }}>
+      <Footer style={{
+ textAlign: 'center', position: 'fixed', width: '100%', bottom: '0',
+}}
+      >
         GXC Web Wallet ©2018 Created by GXC x Decipher
       </Footer>
     );
