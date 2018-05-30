@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { inject, observer } from 'mobx-react';
-import { Button, Checkbox, Form, Icon, Input, Layout, message } from 'antd';
+import {
+  Alert, Button, Checkbox, Form, Icon, Input, Layout,
+  message,
+} from 'antd';
 import LogoBox from '../../components/LogoBox';
 import { showApiError } from '../../utils';
+
 const { Content } = Layout;
 const FormItem = Form.Item;
 
@@ -16,12 +20,16 @@ class Login extends React.Component {
 
   async handleSubmit(e) {
     e.preventDefault();
+    const { authStore } = this.props;
     this.props.form.validateFields(async (err, values) => {
       if (err) return;
       this.props.authStore.setEmail(values.email);
       this.props.authStore.setPassword(values.password);
       try {
         await this.props.authStore.login();
+        if (authStore.redirectParams && authStore.redirectParams.to) {
+          return this.props.history.push(authStore.redirectParams.to);
+        }
         this.props.history.replace('/balance');
       } catch (errors) {
         console.log(errors);
@@ -37,6 +45,9 @@ class Login extends React.Component {
         <Content className="">
           <Form onSubmit={this.handleSubmit.bind(this)} className="login-form">
             <LogoBox />
+            { this.props.authStore.redirectParams &&
+              <Alert message="Login gxc wallet to to start gxc dgame." type="info" />
+            }
             <FormItem>
               {getFieldDecorator('email', {
                 rules: [

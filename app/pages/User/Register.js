@@ -1,10 +1,11 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
-import { Button, Form, Icon, Input, Layout, message } from 'antd';
+import { Alert, Button, Form, Icon, Input, Layout, message } from 'antd';
 
 
 import LogoBox from '../../components/LogoBox';
 import { showApiError } from '../../utils';
+import { Link } from 'react-router-dom';
 
 const { Content } = Layout;
 const FormItem = Form.Item;
@@ -47,6 +48,9 @@ class Register extends React.Component {
             className="register-form"
           >
             <LogoBox />
+            { this.props.authStore.redirectParams &&
+              <Alert message="Register gxc wallet to to start gxc dgame." type="info" />
+            }
             <FormItem>
               {getFieldDecorator('email', {
                 rules: [
@@ -94,14 +98,16 @@ class Register extends React.Component {
                 placeholder="Password"
               />)}
             </FormItem>
-
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-            >
-              Register
-            </Button>
+            <FormItem>
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="login-form-button"
+              >
+                Register
+              </Button>
+              Or <Link to="/login">Login</Link>
+            </FormItem>
 
           </Form>
         </Content>

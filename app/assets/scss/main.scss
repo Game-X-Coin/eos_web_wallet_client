@@ -38,6 +38,9 @@ body {
 .login-form, .register-form {
   margin: 0 auto !important;
   max-width: 350px;
+  .ant-alert {
+    margin-bottom: 1rem;
+  }
   h1 {
     text-align: center;
   }
@@ -91,7 +94,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 2rem 0 4rem 0;
+  margin: 2rem 0 1rem 0;
 
   .logo {
     width: 200px;
