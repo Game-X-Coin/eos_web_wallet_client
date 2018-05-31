@@ -7,7 +7,7 @@ export default {
   GXQ: {
     img: getTokenImage('gxq.png'),
     color: '#FFD111',
-    gameUrl: 'http://gamexcoin.io:8000',
+    gameUrl: 'http://gxcquest.com',
   },
   BLS: {
     // img: getTokenImage('bls.png'),
