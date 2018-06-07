@@ -73,7 +73,20 @@ class Register extends React.Component {
                   {
                     required: true,
                     message: 'Please input your account name!',
-                  }],
+                  },
+                  {
+                    pattern: /^[a-z1-5]+$/,
+                    message: 'AccountName Character must be in a~z,1~5.',
+                  },
+                  {
+                    max: 13,
+                    message: 'length should be less than 13',
+                  },
+                  {
+                    min: 2,
+                    message: 'length should be greater than 1',
+                  },
+                ],
               })(<Input
                 prefix={<Icon
                   type="wallet"
